@@ -1,0 +1,10 @@
+# Cloudflare Pages — security & caching headers
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Long-cache the hashed Next.js static assets
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
