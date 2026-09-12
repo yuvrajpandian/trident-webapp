@@ -753,17 +753,21 @@ export const blogPosts = [
 // ---- IMAGES ---------------------------------------------------------------
 // Set a path (e.g. "/images/hero.jpg") to use a real photo; leave "" for an
 // elegant labelled placeholder. Drop files into /public/images.
+// NOTE: the office photos below are architectural renders of the actual
+// finished Trident Nexus office — real photography hasn't been shot yet.
+// Swap each `src` for a real photo once the shoot happens; nothing else
+// needs to change.
 export const images: Record<string, { src: string; label: string }> = {
-  hero: { src: "", label: "Office with Dubai skyline view" },
-  aboutReception: { src: "", label: "Reception desk with Trident logo" },
+  hero: { src: "/images/office/hero-open-workspace.jpg", label: "Open workspace with city views" },
+  aboutReception: { src: "/images/office/reception.jpg", label: "Reception desk with Trident logo" },
   whyDubai: { src: "", label: "Dubai skyline at night" },
 
   spaceEjari: { src: "", label: "Fast Ejari registration desk" },
-  spaceFlexiDesk: { src: "", label: "Flexi desk workspace" },
-  spaceDedicatedDesk: { src: "", label: "Dedicated desk with storage" },
-  spacePrivateOffice: { src: "", label: "Private office" },
-  spaceMeetingRoom: { src: "", label: "Meeting room" },
-  spaceVirtualOffice: { src: "", label: "Virtual office lounge" },
+  spaceFlexiDesk: { src: "/images/office/flexi-desk-workspace.jpg", label: "Flexi desk workspace" },
+  spaceDedicatedDesk: { src: "/images/office/dedicated-desk-hallway.jpg", label: "Dedicated desk with storage" },
+  spacePrivateOffice: { src: "/images/office/private-office-glass.jpg", label: "Private office" },
+  spaceMeetingRoom: { src: "/images/office/meeting-room.jpg", label: "Meeting room" },
+  spaceVirtualOffice: { src: "/images/office/lounge.jpg", label: "Virtual office lounge" },
 
   serviceFormation: { src: "", label: "Company formation" },
   serviceExpansion: { src: "", label: "Mainland expansion consultation" },
