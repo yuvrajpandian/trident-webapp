@@ -758,11 +758,11 @@ export const blogPosts = [
 // Swap each `src` for a real photo once the shoot happens; nothing else
 // needs to change.
 export const images: Record<string, { src: string; label: string }> = {
-  hero: { src: "/images/office/hero-open-workspace.jpg", label: "Open workspace with city views" },
+  hero: { src: "/images/office/reception.jpg", label: "Reception desk with Trident Nexus signage" },
   aboutReception: { src: "/images/office/reception.jpg", label: "Reception desk with Trident logo" },
   whyDubai: { src: "", label: "Dubai skyline at night" },
 
-  spaceEjari: { src: "", label: "Fast Ejari registration desk" },
+  spaceEjari: { src: "/images/office/hero-open-workspace.jpg", label: "Fast Ejari registration desk" },
   spaceFlexiDesk: { src: "/images/office/flexi-desk-workspace.jpg", label: "Flexi desk workspace" },
   spaceDedicatedDesk: { src: "/images/office/dedicated-desk-hallway.jpg", label: "Dedicated desk with storage" },
   spacePrivateOffice: { src: "/images/office/private-office-glass.jpg", label: "Private office" },
