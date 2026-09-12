@@ -762,7 +762,11 @@ export const images: Record<string, { src: string; label: string }> = {
   aboutReception: { src: "/images/office/reception.jpg", label: "Reception desk with Trident logo" },
   whyDubai: { src: "", label: "Dubai skyline at night" },
 
-  spaceEjari: { src: "/images/office/hero-open-workspace.jpg", label: "Fast Ejari registration desk" },
+  // No distinct render exists yet for Ejari Fast-Track — the only other
+  // candidate (hero-open-workspace.jpg) is a near-duplicate crop of the same
+  // desk row used for Flexi Desk, so this stays a placeholder rather than
+  // showing a misleading third copy of the same shot.
+  spaceEjari: { src: "", label: "Fast Ejari registration desk" },
   spaceFlexiDesk: { src: "/images/office/flexi-desk-workspace.jpg", label: "Flexi desk workspace" },
   spaceDedicatedDesk: { src: "/images/office/dedicated-desk-hallway.jpg", label: "Dedicated desk with storage" },
   spacePrivateOffice: { src: "/images/office/private-office-glass.jpg", label: "Private office" },
