@@ -77,6 +77,9 @@ export function ItemDetailList({ items }: { items: Item[] }) {
                   <Icon name="whatsapp" className="h-4 w-4" /> WhatsApp
                 </a>
               </div>
+              {item.note && (
+                <p className="mt-3 text-xs text-ink-700/55">{item.note}</p>
+              )}
             </div>
           </div>
         ))}

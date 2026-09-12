@@ -95,6 +95,7 @@ export type Item = {
   price?: string; // e.g. "AED 4,500" — real proposed price, shown on-site
   priceNote?: string; // e.g. "per year" or "+ government fees"
   partnerDelivered?: boolean; // shows a "Delivered via licensed partner" disclosure
+  note?: string; // e.g. "Ask us about instalment options." — shown under the CTA
 };
 
 // ---- Spaces (workspace & Ejari products — all delivered directly) ---------
@@ -175,19 +176,20 @@ export const spaces: Item[] = [
     slug: "private-office",
     icon: "diamond",
     title: "Private Office",
-    short: "Fully furnished private offices, priced per seat.",
+    short: "Fully furnished private cabins, rented annually.",
     blurb:
-      "Move into a fully-furnished, lockable private office sized for your team. Reception, utilities, internet and maintenance are all taken care of — priced per seat for teams of any size.",
+      "Move into a fully-furnished, lockable private cabin sized for your team. Reception, utilities, internet and maintenance are all taken care of — rented as an annual cabin lease, with instalment payment available.",
     features: [
       "Fully furnished & move-in ready",
-      "Priced per seat — scales with your team",
+      "Annual rental per cabin — not per seat",
       "Reception & mail handling included",
       "Ejari tenancy for visas & licensing",
-      "Custom quote for larger teams",
+      "Custom quote for larger cabins",
     ],
     image: "spacePrivateOffice",
-    price: "From AED 2,200",
-    priceNote: "per seat, per month",
+    price: "From AED 38,000",
+    priceNote: "per year, per cabin",
+    note: "Instalment payment plans available — ask us for options.",
   },
   {
     slug: "meeting-room",
