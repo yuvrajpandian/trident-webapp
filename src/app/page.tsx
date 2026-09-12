@@ -44,7 +44,7 @@ function Hero() {
       <Container className="grid items-center gap-10 py-12 lg:grid-cols-2 lg:gap-12 lg:py-16">
         {/* Left */}
         <div className="animate-fade-up">
-          <h1 className="font-display text-5xl font-bold leading-[1.02] text-ink-900 sm:text-6xl">
+          <h1 className="font-display text-4xl font-bold leading-[1.05] text-ink-900 sm:text-5xl sm:leading-[1.02] lg:text-6xl">
             YOUR BUSINESS.
             <br />
             <span className="text-gold-500">OUR ADDRESS.</span>
@@ -137,7 +137,7 @@ function Solutions() {
           center
         />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:nth-child(3n+1):nth-last-child(1)]:col-start-2">
           {spaces.map((s) => (
             <Link
               key={s.slug}
