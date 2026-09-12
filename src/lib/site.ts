@@ -33,7 +33,7 @@ export const site = {
   phone: "+971 50 123 4567", // TODO: confirm real number
   phoneHref: "+971501234567", // TODO: confirm, digits only
   whatsapp: "971501234567", // TODO: confirm
-  email: "info@tridentnx.com", // TODO: confirm — founder's own address is yuvaraj@tridentnx.com if preferred
+  email: "info@tridentnexusdubai.com", // TODO: confirm this mailbox is live
   address: {
     line1: "Office 1503, Fahidi Heights",
     line2: "Khalid Bin Al Waleed Rd, Bur Dubai, Al Hamriya",
@@ -52,7 +52,8 @@ export const site = {
   // Free, no-backend form handling. Sign up at https://web3forms.com, paste key.
   web3formsKey: "", // TODO: paste your Web3Forms access key
 
-  url: "https://tridentnx.com", // confirmed real domain (from brand signature)
+  url: "https://tridentnexusdubai.com", // primary domain
+  urlIndia: "https://tridentnexusdubai.in", // India-facing domain — referenced on the India Founders page as a trust signal
 } as const;
 
 export const whatsappLink = (message?: string) =>

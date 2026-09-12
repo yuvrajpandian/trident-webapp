@@ -43,6 +43,10 @@ export default function IndiaFoundersPage() {
               title="Fast Ejari, transparent pricing, and a team that meets you on WhatsApp."
               intro="No Bur Dubai business centre combines all three — most independents race to the bottom on price with no trust, and the big consultancies don't own the workspace or the Ejari relationship."
             />
+            <p className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-ink-700/70">
+              <Icon name="globe" className="h-4 w-4 text-gold-600" />
+              Also reachable at tridentnexusdubai.in
+            </p>
           </div>
         </Container>
       </section>
