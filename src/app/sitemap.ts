@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/spaces/",
     "/why-dubai/",
     "/india-founders/",
+    "/free-zone-mainland/",
     "/blog/",
     "/contact/",
   ];

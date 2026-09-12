@@ -12,6 +12,7 @@ import {
   bundles,
   whyDubai,
   indiaFounders,
+  freeZoneMainland,
   testimonials,
   site,
   whatsappLink,
@@ -27,6 +28,7 @@ export default function HomePage() {
       <ServicesTeaser />
       <WhyDubai />
       <Bundles />
+      <FreeZoneMainlandSection />
       <IndiaFoundersSection />
       <AboutPreview />
       <Testimonials />
@@ -95,7 +97,7 @@ function RouteFinder() {
           title="What do you need?"
           intro="You don't need to know the package name. Tell us where you are today, and we'll help map the clearest route forward."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {routeFinder.map((r) => (
             <Link
               key={r.n}
@@ -481,6 +483,65 @@ function Bundles() {
             Contact us for an exact, all-inclusive quote.
           </Link>
         </p>
+      </Container>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------ Free Zone → Mainland */
+function FreeZoneMainlandSection() {
+  return (
+    <section className="bg-cream-50 py-24">
+      <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-gold-600">
+            {freeZoneMainland.eyebrow}
+          </span>
+          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
+            {freeZoneMainland.title}
+          </h2>
+          <p className="mt-5 leading-relaxed text-ink-700/70">
+            {freeZoneMainland.intro}
+          </p>
+
+          <div className="mt-6 flex items-start gap-3 rounded-xl border border-gold-500/30 bg-gold-500/10 p-4">
+            <Icon name="clock" className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" />
+            <div>
+              <div className="text-xs font-bold uppercase tracking-wider text-gold-700">
+                {freeZoneMainland.deadline.label}
+              </div>
+              <p className="mt-1 text-sm text-ink-700/80">
+                {freeZoneMainland.deadline.text}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button href="/free-zone-mainland/" variant="gold" withArrow>
+              {freeZoneMainland.cta}
+            </Button>
+            <Button href="/services/#mainland-expansion" variant="outline">
+              View Mainland Expansion
+            </Button>
+          </div>
+        </div>
+
+        <div className="grid gap-5 sm:grid-cols-2">
+          {freeZoneMainland.reasons.map((r) => (
+            <div
+              key={r.title}
+              className="rounded-2xl border border-cream-200 bg-white p-6"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-900 text-gold-400">
+                <Icon name={r.icon} className="h-5 w-5" />
+              </span>
+              <h3 className="mt-4 font-semibold text-ink-900">{r.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700/65">
+                {r.text}
+              </p>
+            </div>
+          ))}
+        </div>
       </Container>
     </section>
   );

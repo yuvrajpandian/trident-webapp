@@ -71,6 +71,7 @@ export const navLinks = [
   { label: "Spaces", href: "/spaces/" },
   { label: "Why Dubai", href: "/why-dubai/" },
   { label: "India Founders", href: "/india-founders/" },
+  { label: "Mainland Presence", href: "/free-zone-mainland/" },
   { label: "Blog", href: "/blog/" },
   { label: "Contact Us", href: "/contact/" },
 ];
@@ -234,14 +235,14 @@ export const services: Item[] = [
     slug: "mainland-expansion",
     icon: "rocket",
     title: "Mainland Expansion",
-    short: "Take your free-zone company onto Dubai mainland (ECR 11/2025).",
+    short: "Fast mainland Ejari & address for free zone companies — not a new company.",
     blurb:
-      "Under Executive Council Resolution 11/2025, most free-zone companies can now open a branch on Dubai mainland. We provide the mainland Ejari-ready address you need and coordinate the branch filing directly.",
+      "Under Executive Council Resolution 11 of 2025, many free zone companies operating outside their zone must become mainland-compliant by 21 March 2026. We provide the mainland Ejari-ready address and coordinate the branch filing directly — unlocking direct UAE sales, tender eligibility, and smoother banking, without replacing your free zone licence.",
     features: [
-      "Mainland branch licence coordination",
-      "Ejari-ready registered address included",
-      "Free-zone NOC guidance",
-      "DET approval coordination",
+      "Mainland Ejari-ready registered address",
+      "Branch licence filing coordination",
+      "Unlocks direct UAE customer sales",
+      "Meets bank & government-tender mainland requirements",
       "Delivered in-house — one team, start to finish",
     ],
     image: "serviceExpansion",
@@ -383,6 +384,13 @@ export const routeFinder = [
     text: "Tell us where you are today and we'll map out the clearest route forward.",
     cta: "Talk to an Advisor",
     href: "/contact/",
+  },
+  {
+    n: "06",
+    title: "My free zone company needs mainland presence",
+    text: "Get compliant fast — mainland Ejari and address for banking, tenders, and selling to UAE customers.",
+    cta: "Explore Mainland Presence",
+    href: "/free-zone-mainland/",
   },
 ];
 
@@ -604,6 +612,63 @@ export const indiaFaqs = [
   },
 ];
 
+// ---- Free Zone → Mainland presence -----------------------------------------
+// A second target segment, distinct from new founders: existing free zone
+// companies that need mainland compliance. Trident is positioned as the fast
+// mainland Ejari + address solution here — not a free zone formation provider.
+export const freeZoneMainland = {
+  eyebrow: "For Free Zone Companies",
+  title: "Your free zone licence, backed by a mainland presence.",
+  intro:
+    "A free zone licence alone can't sell directly to UAE customers, and banks increasingly expect mainland substance. We provide the fast mainland Ejari and address that makes you compliant — not a new company, just what's missing.",
+  deadline: {
+    label: "Compliance Deadline",
+    text: "Executive Council Resolution 11 of 2025 requires many free zone companies operating outside their zone to become mainland-compliant by 21 March 2026.",
+  },
+  reasons: [
+    {
+      icon: "shield",
+      title: "You can't sell directly to UAE customers",
+      text: "A free zone licence alone doesn't permit direct sales into the UAE mainland market — a registered mainland presence does.",
+    },
+    {
+      icon: "wallet",
+      title: "Banks scrutinise free zone accounts harder",
+      text: "Major UAE banks — including Emirates NBD, ADCB, Mashreq and RAK Bank — generally prefer mainland-licensed businesses and apply extra scrutiny to free-zone-only accounts.",
+    },
+    {
+      icon: "building",
+      title: "Only mainland companies can bid on government tenders",
+      text: "Government tenders are typically restricted to mainland-licensed entities — a free zone licence alone shuts that door.",
+    },
+    {
+      icon: "chart",
+      title: "Mainland presence signals credibility",
+      text: "A mainland address and Ejari registration reads as more substantial to banks and larger enterprise clients than a free zone address alone.",
+    },
+  ],
+  cta: "Check My Compliance Options",
+};
+
+export const freeZoneFaqs = [
+  {
+    q: "What is Executive Council Resolution 11 of 2025?",
+    a: "It's a Dubai regulation requiring many free zone companies operating outside their free zone to establish mainland compliance — including a mainland-registered address — by 21 March 2026. Requirements vary by activity and free zone, so we recommend confirming your specific obligation with us or your legal advisor.",
+  },
+  {
+    q: "Do I need to form an entirely new mainland company?",
+    a: "Not necessarily. In many cases, what's required is a compliant mainland branch presence — a registered Ejari address and the associated branch filing — rather than dissolving or replacing your free zone company. We coordinate the branch filing directly.",
+  },
+  {
+    q: "Can I keep operating my free zone licence at the same time?",
+    a: "Yes — a mainland branch presence typically works alongside your existing free zone licence, giving you both the benefits you already have and mainland compliance where you need it.",
+  },
+  {
+    q: "What happens if I miss the 21 March 2026 deadline?",
+    a: "We can't advise on penalties — that's a question for DET or your legal counsel. What we can tell you is that mainland Ejari and address setup typically takes far less time than most companies expect, so there's no reason to wait until the deadline is close.",
+  },
+];
+
 // ---- Testimonials ---------------------------------------------------------
 export const testimonials = [
   {
@@ -709,6 +774,7 @@ export const images: Record<string, { src: string; label: string }> = {
   serviceBank: { src: "", label: "Bank account opening" },
 
   indiaFounders: { src: "", label: "Remote onboarding for India-based founders" },
+  freeZoneMainland: { src: "", label: "Mainland office and Ejari for free zone companies" },
 
   blog1: { src: "", label: "Article cover" },
   blog2: { src: "", label: "Article cover" },
