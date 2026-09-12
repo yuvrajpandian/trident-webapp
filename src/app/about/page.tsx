@@ -9,7 +9,7 @@ import { stats, processSteps, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About Us — More Than a Workspace",
   description:
-    "Trident Business Center Nexus is a Dubai-based partner providing premium workspaces and end-to-end business setup, helping companies thrive in Dubai's dynamic market.",
+    "Trident Nexus Business Centre is a Dubai-based partner providing premium workspaces and end-to-end business setup, helping companies thrive in Dubai's dynamic market.",
 };
 
 export default function AboutPage() {

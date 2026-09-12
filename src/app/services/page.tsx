@@ -8,7 +8,7 @@ import { faqs, services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services — Company Formation, Visas & Corporate Services",
   description:
-    "Trident Business Center Nexus offers end-to-end Dubai business services: mainland trade licenses, PRO & visa services, corporate compliance, and bank account opening.",
+    "Trident Nexus Business Centre offers end-to-end Dubai business services: mainland trade licenses, PRO & visa services, corporate compliance, and bank account opening.",
 };
 
 export default function ServicesPage() {

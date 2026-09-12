@@ -5,7 +5,11 @@ import { Media } from "@/components/Media";
 import { CtaBand } from "@/components/CtaBand";
 import {
   spaces,
+  services,
   heroBadges,
+  routeFinder,
+  processSteps,
+  packages,
   whyDubai,
   testimonials,
   site,
@@ -15,8 +19,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <RouteFinder />
       <Solutions />
+      <Journey />
+      <ServicesTeaser />
       <WhyDubai />
+      <Packages />
       <AboutPreview />
       <Testimonials />
       <CtaBand />
@@ -41,11 +49,11 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/spaces/" variant="gold">
-              Explore Spaces
+            <Button href="#route-finder" variant="gold">
+              Find My Solution
             </Button>
-            <Button href="/services/" variant="outline">
-              Our Services
+            <Button href="/spaces/" variant="outline">
+              View Workspaces
             </Button>
           </div>
 
@@ -68,6 +76,45 @@ function Hero() {
           </div>
           {/* gold accent block */}
           <div className="absolute -bottom-5 -left-5 hidden h-24 w-24 rounded-2xl border-4 border-gold-500/30 bg-gold-500/10 lg:block" />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------- Route finder ---- */
+function RouteFinder() {
+  return (
+    <section id="route-finder" className="scroll-mt-24 bg-white py-24">
+      <Container>
+        <SectionHeading
+          eyebrow="Start With Your Need"
+          title="What do you need?"
+          intro="You don't need to know the package name. Tell us where you are today, and we'll help map the clearest route forward."
+        />
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {routeFinder.map((r) => (
+            <Link
+              key={r.n}
+              href={r.href}
+              className="group flex flex-col rounded-2xl border border-cream-200 bg-cream-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:bg-white hover:shadow-lg hover:shadow-ink-900/5"
+            >
+              <span className="font-display text-3xl font-bold text-gold-500">
+                {r.n}
+              </span>
+              <h3 className="mt-3 font-semibold text-ink-900">{r.title}</h3>
+              <p className="mt-2 flex-1 text-xs leading-relaxed text-ink-700/65">
+                {r.text}
+              </p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gold-600">
+                {r.cta}
+                <Icon
+                  name="arrowRight"
+                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                />
+              </span>
+            </Link>
+          ))}
         </div>
       </Container>
     </section>
@@ -111,9 +158,109 @@ function Solutions() {
                 </p>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gold-600">
                   Learn More
-                  <Icon name="arrowRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <Icon
+                    name="arrowRight"
+                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  />
                 </span>
               </div>
+            </Link>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------- Journey --- */
+function Journey() {
+  return (
+    <section id="journey" className="relative scroll-mt-24 overflow-hidden bg-ink-950 py-24">
+      <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-gold-500/10 blur-3xl" />
+      <Container className="relative">
+        <SectionHeading
+          eyebrow="The Trident Nexus Difference"
+          title={
+            <span className="text-white">
+              More than an office — your Dubai business infrastructure.
+            </span>
+          }
+          intro="A place to begin, a team to coordinate the moving parts, and a platform of support for what comes next."
+          light
+        />
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step, i) => (
+            <div key={step.n} className="relative">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                <span className="font-display text-4xl font-bold text-gold-500">
+                  {step.n}
+                </span>
+                <h3 className="mt-3 font-semibold text-white">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-cream-100/70">
+                  {step.text}
+                </p>
+              </div>
+              {i < processSteps.length - 1 && (
+                <Icon
+                  name="arrowRight"
+                  className="absolute -right-4 top-1/2 hidden h-6 w-6 -translate-y-1/2 text-gold-500/60 lg:block"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 flex justify-center">
+          <Button href="/contact/" variant="gold">
+            Talk to a Business Advisor
+          </Button>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------- Services teaser - */
+function ServicesTeaser() {
+  return (
+    <section id="services" className="scroll-mt-24 bg-white py-24">
+      <Container>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading
+            eyebrow="Beyond Your Workspace"
+            title="Support for the business behind the office."
+            intro="Licensing, visas, banking and compliance — choose individual services, or bring them together with your workspace."
+          />
+          <Button
+            href="/services/"
+            variant="outline"
+            withArrow
+            className="shrink-0"
+          >
+            View All Services
+          </Button>
+        </div>
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((s) => (
+            <Link
+              key={s.slug}
+              href={`/services/#${s.slug}`}
+              className="group flex flex-col rounded-2xl border border-cream-200 bg-cream-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:shadow-ink-900/5"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
+                <Icon name={s.icon} className="h-5 w-5" />
+              </span>
+              <h3 className="mt-4 font-semibold text-ink-900">{s.title}</h3>
+              <p className="mt-2 flex-1 text-xs leading-relaxed text-ink-700/65">
+                {s.short}
+              </p>
+              <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-gold-600">
+                Learn More
+                <Icon
+                  name="arrowRight"
+                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                />
+              </span>
             </Link>
           ))}
         </div>
@@ -173,10 +320,107 @@ function WhyDubai() {
   );
 }
 
+/* ------------------------------------------------------------- Packages -- */
+function Packages() {
+  return (
+    <section id="packages" className="scroll-mt-24 bg-white py-24">
+      <Container>
+        <SectionHeading
+          eyebrow="A Simpler Way to Compare"
+          title="Start with the level of support you need."
+          intro="These are starting points, not fixed offers — every quote is tailored to your business activity and visa needs."
+          center
+        />
+
+        <div className="mt-14 grid gap-7 lg:grid-cols-3">
+          {packages.map((p) => (
+            <div
+              key={p.name}
+              className={`relative flex flex-col rounded-2xl border p-8 ${
+                p.highlight
+                  ? "border-gold-400 bg-ink-950 text-white shadow-2xl shadow-ink-900/20 lg:-translate-y-3"
+                  : "border-cream-200 bg-cream-50"
+              }`}
+            >
+              {p.highlight && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 px-4 py-1 text-xs font-bold uppercase tracking-wider text-ink-900">
+                  {p.tierLabel}
+                </span>
+              )}
+              {!p.highlight && (
+                <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                  {p.tierLabel}
+                </span>
+              )}
+
+              <h3
+                className={`mt-3 font-display text-2xl font-bold ${
+                  p.highlight ? "text-white" : "text-ink-900"
+                }`}
+              >
+                {p.name}
+              </h3>
+              <p
+                className={`mt-2 text-sm ${
+                  p.highlight ? "text-cream-100/70" : "text-ink-700/65"
+                }`}
+              >
+                {p.positioning}
+              </p>
+
+              <ul className="mt-6 space-y-3">
+                {p.features.map((f) => (
+                  <li key={f} className="flex items-start gap-3">
+                    <span
+                      className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+                        p.highlight
+                          ? "bg-gold-500/20 text-gold-400"
+                          : "bg-gold-500/15 text-gold-600"
+                      }`}
+                    >
+                      <Icon name="check" className="h-3.5 w-3.5" />
+                    </span>
+                    <span
+                      className={`text-sm ${
+                        p.highlight ? "text-cream-100/90" : "text-ink-700/80"
+                      }`}
+                    >
+                      {f}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 pt-2">
+                <Button
+                  href={p.href}
+                  variant={p.highlight ? "gold" : "outline"}
+                  className="w-full"
+                  withArrow
+                >
+                  {p.cta}
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-ink-700/55">
+          Every quote is tailored to your business activity, visa count and
+          workspace needs.{" "}
+          <Link href="/contact/" className="font-semibold text-gold-600 hover:underline">
+            Contact us for an exact, all-inclusive price.
+          </Link>
+        </p>
+      </Container>
+    </section>
+  );
+}
+
 /* --------------------------------------------------------- About preview - */
 function AboutPreview() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-cream-50 py-24">
       <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div className="relative order-2 lg:order-1">
           <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg shadow-ink-900/10">
@@ -211,7 +455,7 @@ function AboutPreview() {
 /* -------------------------------------------------------- Testimonials --- */
 function Testimonials() {
   return (
-    <section className="bg-cream-50 py-24">
+    <section className="bg-white py-24">
       <Container>
         <SectionHeading
           eyebrow="Client Stories"
@@ -220,7 +464,7 @@ function Testimonials() {
         />
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {testimonials.map((t) => (
-            <figure key={t.name} className="flex flex-col rounded-2xl border border-cream-200 bg-white p-7">
+            <figure key={t.name} className="flex flex-col rounded-2xl border border-cream-200 bg-cream-50 p-7">
               <div className="flex gap-1 text-gold-500">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} />

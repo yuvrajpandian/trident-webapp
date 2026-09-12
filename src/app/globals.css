@@ -1,28 +1,29 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Trident Business Center · Nexus — Design tokens
-   Black + gold + cream. Premium, photo-driven, light theme.
+   Trident Nexus Business Centre — Design tokens
+   Sourced from the official brand identity suite. Do not alter
+   these hex values without checking the brand system first.
    ============================================================ */
 @theme {
-  /* Ink (warm charcoal/black) for dark sections, footer, headings */
-  --color-ink-950: #0e0e0d;
-  --color-ink-900: #16140f;
-  --color-ink-800: #201d16;
-  --color-ink-700: #2c2820;
-  --color-ink-600: #3b362c;
+  /* Ink (charcoal) — brand's dark neutral, for dark sections, footer, headings */
+  --color-ink-950: #171717;
+  --color-ink-900: #1e1e1e; /* brand charcoal */
+  --color-ink-800: #242424;
+  --color-ink-700: #2e2e2e;
+  --color-ink-600: #3a3a3a;
 
-  /* Gold accent */
-  --color-gold-700: #8f7030;
-  --color-gold-600: #a9883a;
-  --color-gold-500: #c2a24e;
-  --color-gold-400: #d2b366;
-  --color-gold-300: #e1c889;
+  /* Gold / saffron accent — brand's signature colour */
+  --color-gold-700: #96690e;
+  --color-gold-600: #b87a0e; /* brand secondary gold (hover/darker) */
+  --color-gold-500: #de9511; /* brand primary gold (saffron) */
+  --color-gold-400: color-mix(in srgb, #de9511 75%, white);
+  --color-gold-300: color-mix(in srgb, #de9511 55%, white);
 
-  /* Cream / sand backgrounds */
-  --color-cream-50: #faf8f3;
-  --color-cream-100: #f4efe4;
-  --color-cream-200: #e9e1d1;
+  /* Cream / off-white backgrounds — brand's light neutrals */
+  --color-cream-50: #f9f9fb;
+  --color-cream-100: #f4f1ea;
+  --color-cream-200: #ededed;
 
   /* Fonts wired via next/font in layout.tsx */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;

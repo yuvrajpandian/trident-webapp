@@ -12,18 +12,19 @@
 
 export const site = {
   // ---- Brand -------------------------------------------------------------
-  name: "Trident Business Center",
+  // Matches the official brand identity suite / logo pack.
+  name: "Trident Nexus",
   accent: "Nexus", // the gold sub-brand shown next to the logo
-  fullName: "Trident Business Center Nexus",
-  tagline: "Premium Business Solutions in the Heart of Dubai",
+  fullName: "Trident Nexus Business Centre",
+  tagline: "Everything your business needs to start, work and grow in Dubai",
   description:
-    "Trident Business Center Nexus provides premium workspaces and end-to-end business setup in Dubai — flexi desks, private offices, meeting rooms, virtual offices, company formation and PRO services.",
+    "Trident Nexus Business Centre provides premium workspaces and end-to-end business setup in Dubai — flexi desks, private offices, meeting rooms, virtual offices, company formation and PRO services.",
 
   // ---- Contact details ---------------------------------------------------
-  phone: "+971 50 123 4567",
-  phoneHref: "+971501234567",
-  whatsapp: "971501234567",
-  email: "info@tridentnexus.ae",
+  phone: "+971 50 123 4567", // TODO: confirm real number
+  phoneHref: "+971501234567", // TODO: confirm, digits only
+  whatsapp: "971501234567", // TODO: confirm
+  email: "info@tridentnx.com", // TODO: confirm — founder's own address is yuvaraj@tridentnx.com if preferred
   address: {
     line1: "Office 000, Tower Name", // TODO: exact office & tower
     line2: "Business Bay", // TODO
@@ -42,7 +43,7 @@ export const site = {
   // Free, no-backend form handling. Sign up at https://web3forms.com, paste key.
   web3formsKey: "", // TODO: paste your Web3Forms access key
 
-  url: "https://tridentnexus.ae",
+  url: "https://tridentnx.com", // confirmed real domain (from brand signature)
 } as const;
 
 export const whatsappLink = (message?: string) =>
@@ -51,7 +52,7 @@ export const whatsappLink = (message?: string) =>
   }`;
 
 export const bookTourMessage =
-  "Hi, I'd like to book a tour of Trident Business Center Nexus.";
+  "Hi, I'd like to book a tour of Trident Nexus Business Centre.";
 
 // ---- Navigation -----------------------------------------------------------
 export const navLinks = [
@@ -233,6 +234,47 @@ export const services: Item[] = [
   },
 ];
 
+// ---- Route finder ("What do you need?") -----------------------------------
+// A homepage segmentation section — helps a visitor self-select before they
+// know what a "package" is called, and routes them straight to the right page.
+export const routeFinder = [
+  {
+    n: "01",
+    title: "I need a business address",
+    text: "Explore virtual office and Ejari-ready address options for your license.",
+    cta: "Explore Virtual Office",
+    href: "/spaces/#virtual-office",
+  },
+  {
+    n: "02",
+    title: "I'm starting a company",
+    text: "Bring your trade license, visas and workspace together in one journey.",
+    cta: "Start My Company",
+    href: "/services/#company-formation",
+  },
+  {
+    n: "03",
+    title: "I need somewhere to work",
+    text: "Compare flexi desks, meeting rooms and fully furnished private offices.",
+    cta: "View Workspaces",
+    href: "/spaces/",
+  },
+  {
+    n: "04",
+    title: "I already have a company",
+    text: "Add visa, PRO, banking, accounting and compliance support as you grow.",
+    cta: "Explore Services",
+    href: "/services/",
+  },
+  {
+    n: "05",
+    title: "I'm not sure where to start",
+    text: "Tell us where you are today and we'll map out the clearest route forward.",
+    cta: "Talk to an Advisor",
+    href: "/contact/",
+  },
+];
+
 // ---- Why Dubai ------------------------------------------------------------
 export const whyDubai = {
   reasons: [
@@ -258,12 +300,89 @@ export const stats = [
   { value: "98%", label: "Client Retention" },
 ];
 
-// ---- Process steps --------------------------------------------------------
+// ---- Process steps ("the journey") -----------------------------------------
+// More than an office — this is the Start / Establish / Operate / Grow
+// narrative used on the homepage and About page.
 export const processSteps = [
-  { n: "01", title: "Free Consultation", text: "Tell us your goals. We recommend the right space, license, and visa package." },
-  { n: "02", title: "Documentation & Approvals", text: "We prepare your paperwork and secure approvals and name reservation." },
-  { n: "03", title: "License Issued", text: "Your trade license is issued and your company is officially registered." },
-  { n: "04", title: "Move In & Operate", text: "We process visas, open your bank account, and hand over the keys to your space." },
+  {
+    n: "01",
+    title: "Start",
+    text: "Tell us your business activity and goals — we help you choose the right license, workspace and visa route from day one.",
+  },
+  {
+    n: "02",
+    title: "Establish",
+    text: "We coordinate your trade license, Ejari tenancy and workspace together, so the foundations of your company are set up right.",
+  },
+  {
+    n: "03",
+    title: "Operate",
+    text: "From visas and Emirates ID to bank account opening and compliance — we handle the practical next steps as you start trading.",
+  },
+  {
+    n: "04",
+    title: "Grow",
+    text: "Move from a flexi desk to a private office and add services as you need them — your setup evolves with your business, not against it.",
+  },
+];
+
+// ---- Packages ---------------------------------------------------------------
+// Tiers by level of support, not fixed prices — every quote is tailored, so we
+// deliberately show "custom quote" CTAs rather than published figures.
+export type Package = {
+  tierLabel: string;
+  name: string;
+  positioning: string;
+  features: string[];
+  cta: string;
+  href: string;
+  highlight?: boolean;
+};
+
+export const packages: Package[] = [
+  {
+    tierLabel: "Business Presence",
+    name: "Establish",
+    positioning:
+      "For businesses exploring a Dubai address and a lighter-touch workspace solution.",
+    features: [
+      "Virtual office & registered address",
+      "Mail handling & call answering",
+      "Ejari tenancy for licensing",
+      "Meeting room credits",
+    ],
+    cta: "Explore Virtual Office",
+    href: "/spaces/#virtual-office",
+  },
+  {
+    tierLabel: "Most Flexible",
+    name: "Work",
+    positioning:
+      "For founders who want a usable workspace with the right address and support options.",
+    features: [
+      "Flexi desk & coworking access",
+      "Ejari tenancy included",
+      "Meeting & conference rooms",
+      "Company setup add-ons",
+    ],
+    cta: "Compare Workspaces",
+    href: "/spaces/",
+    highlight: true,
+  },
+  {
+    tierLabel: "Dedicated Space",
+    name: "Grow",
+    positioning:
+      "For teams that need privacy, a professional base and room to expand.",
+    features: [
+      "Fully furnished private office",
+      "Team-size matching",
+      "Full business services add-on",
+      "Tour before you commit",
+    ],
+    cta: "Check Availability",
+    href: "/spaces/#private-office",
+  },
 ];
 
 // ---- Testimonials ---------------------------------------------------------
@@ -305,6 +424,10 @@ export const faqs = [
   {
     q: "Do you offer a registered address for licensing?",
     a: "Absolutely. Our Flexi Desk, virtual office, and private office packages include a registered, license-ready address with an Ejari tenancy contract.",
+  },
+  {
+    q: "Can you guarantee my bank account, license or visa will be approved?",
+    a: "No approval can ever be guaranteed — final decisions always rest with the relevant bank or government authority. What we guarantee is thorough preparation and honest guidance, to give your application the best possible chance.",
   },
 ];
 

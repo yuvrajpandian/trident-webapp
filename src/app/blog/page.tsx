@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Blog — Dubai Business Setup Insights & Guides",
   description:
-    "Practical guides and insights on setting up and growing your business in Dubai — licenses, visas, costs, workspaces, and more from Trident Business Center Nexus.",
+    "Practical guides and insights on setting up and growing your business in Dubai — licenses, visas, costs, workspaces, and more from Trident Nexus Business Centre.",
 };
 
 export default function BlogPage() {

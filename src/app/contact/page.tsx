@@ -8,7 +8,7 @@ import { site, bookTourMessage, whatsappLink } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact Us — Book a Tour or Free Consultation",
   description:
-    "Get in touch with Trident Business Center Nexus. Book a tour of our Dubai workspaces or a free consultation on company formation, visas, and corporate services.",
+    "Get in touch with Trident Nexus Business Centre. Book a tour of our Dubai workspaces or a free consultation on company formation, visas, and corporate services.",
 };
 
 export default function ContactPage() {

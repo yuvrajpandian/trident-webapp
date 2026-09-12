@@ -24,7 +24,7 @@ const display = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.fullName} — Business Center & Company Formation in Dubai`,
+    default: `${site.fullName} — Business Centre & Company Formation in Dubai`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "PRO services Dubai",
   ],
   openGraph: {
-    title: `${site.fullName} — Business Center in Dubai`,
+    title: `${site.fullName} — Business Centre in Dubai`,
     description: site.description,
     url: site.url,
     siteName: site.fullName,
