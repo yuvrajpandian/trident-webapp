@@ -35,11 +35,11 @@ export const site = {
   whatsapp: "971501234567", // TODO: confirm
   email: "info@tridentnx.com", // TODO: confirm — founder's own address is yuvaraj@tridentnx.com if preferred
   address: {
-    line1: "Office 000, Tower Name", // TODO: exact office & tower
-    line2: "Business Bay", // TODO
+    line1: "Office 1503, Fahidi Heights",
+    line2: "Khalid Bin Al Waleed Rd, Bur Dubai, Al Hamriya",
     city: "Dubai, United Arab Emirates",
   },
-  mapsQuery: "Business Bay, Dubai", // TODO: exact location
+  mapsQuery: "Fahidi Heights, Khalid Bin Al Waleed Road, Bur Dubai, Dubai, UAE",
 
   hours: "Sunday – Thursday, 9:00 AM – 6:00 PM",
 
@@ -131,9 +131,29 @@ export const spaces: Item[] = [
       "Mail collection & forwarding",
       "Dedicated phone & call handling",
       "2 hrs/month meeting room credit",
+      "Upgrade to Plus anytime for more",
     ],
     image: "spaceVirtualOffice",
     price: "AED 4,500",
+    priceNote: "per year",
+  },
+  {
+    slug: "virtual-office-plus",
+    icon: "phone",
+    title: "Virtual Office + Ejari Plus",
+    short: "Everything in Virtual Office + Ejari, plus a dedicated landline, daily lounge access and inspection support.",
+    blurb:
+      "For businesses that want more than the basics — a dedicated UAE landline number, daily lounge access, triple the meeting room credit, and support through DED, Labour and Bank inspections, all on top of everything in Virtual Office + Ejari. A genuinely richer tier, not just a label.",
+    features: [
+      "Everything in Virtual Office + Ejari",
+      "Dedicated UAE landline number + call forwarding",
+      "PO Box + courier notifications",
+      "3 hrs/day lounge access",
+      "6 hrs/month meeting room credit",
+      "Govt. inspection support (DED/Labour/Bank) — 48-hour notice window",
+    ],
+    image: "spaceVirtualOfficePlus",
+    price: "AED 6,500",
     priceNote: "per year",
   },
   {
@@ -776,6 +796,10 @@ export const images: Record<string, { src: string; label: string }> = {
   spacePrivateOffice: { src: "/images/office/private-office-glass.jpg", label: "Private office" },
   spaceMeetingRoom: { src: "/images/office/meeting-room.jpg", label: "Meeting room" },
   spaceVirtualOffice: { src: "/images/office/lounge.jpg", label: "Virtual office lounge" },
+  // No distinct render yet for the Plus tier — reusing the Standard tier's
+  // lounge photo would recreate the same duplicate-image issue fixed earlier,
+  // so this stays a placeholder until a genuinely different render exists.
+  spaceVirtualOfficePlus: { src: "", label: "Dedicated landline & daily lounge access" },
 
   serviceFormation: { src: "", label: "Company formation" },
   serviceExpansion: { src: "", label: "Mainland expansion consultation" },
