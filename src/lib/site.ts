@@ -100,21 +100,20 @@ export type Item = {
 // ---- Spaces (workspace & Ejari products — all delivered directly) ---------
 export const spaces: Item[] = [
   {
-    slug: "ejari-fast-track",
-    icon: "bolt",
-    title: "Ejari Fast-Track",
-    short: "Already have a company or space? Get compliant Ejari in 15–30 minutes.",
+    slug: "virtual-office-address",
+    icon: "docCheck",
+    title: "Virtual Office Address",
+    short: "A registered address and tenancy contract — no Ejari included.",
     blurb:
-      "If you already have a company or workspace elsewhere and just need fast, compliant Ejari registration, this is the quickest route — issued in as little as 15–30 minutes, with light desk access included.",
+      "A straightforward registered business address with a signed tenancy contract — ideal if you don't need Ejari registration for licensing. Upgrade to Virtual Office + Ejari anytime your requirements change.",
     features: [
-      "Ejari issued in 15–30 minutes",
-      "Light shared-desk access included",
-      "No long-term desk commitment required",
-      "Ideal for renewals or switching centres",
-      "Full DLD / Trakheesi compliance",
+      "Registered business address",
+      "Signed tenancy contract",
+      "Mail collection point",
+      "Upgrade path to Virtual Office + Ejari anytime",
     ],
-    image: "spaceEjari",
-    price: "AED 3,200",
+    image: "spaceVirtualOfficeAddress",
+    price: "AED 2,500",
     priceNote: "per year",
   },
   {
@@ -123,10 +122,11 @@ export const spaces: Item[] = [
     title: "Virtual Office + Ejari",
     short: "A prestigious Dubai address with fast, compliant Ejari.",
     blurb:
-      "Get a prestigious Dubai business address, professional mail handling, and call answering — with Ejari included, so your license stays fully compliant without the cost of a full-time office.",
+      "Get a prestigious Dubai business address, professional mail handling, and call answering — with Ejari issued in as little as 15–30 minutes, so your license stays fully compliant without the cost of a full-time office. Ideal for new licenses, renewals, or switching centres.",
     features: [
       "Prestigious Dubai business address",
       "Ejari tenancy contract included",
+      "Ejari issued in 15–30 minutes",
       "Mail collection & forwarding",
       "Dedicated phone & call handling",
       "2 hrs/month meeting room credit",
@@ -762,11 +762,11 @@ export const images: Record<string, { src: string; label: string }> = {
   aboutReception: { src: "/images/office/reception.jpg", label: "Reception desk with Trident logo" },
   whyDubai: { src: "", label: "Dubai skyline at night" },
 
-  // No distinct render exists yet for Ejari Fast-Track — the only other
-  // candidate (hero-open-workspace.jpg) is a near-duplicate crop of the same
-  // desk row used for Flexi Desk, so this stays a placeholder rather than
-  // showing a misleading third copy of the same shot.
-  spaceEjari: { src: "", label: "Fast Ejari registration desk" },
+  // No distinct render exists yet for the address-only tier — reusing the
+  // lounge photo already used for Virtual Office + Ejari would recreate the
+  // exact duplicate-image problem this file was fixed to avoid, so this
+  // stays a placeholder until a genuinely different render exists.
+  spaceVirtualOfficeAddress: { src: "", label: "Registered address & tenancy contract" },
   spaceFlexiDesk: { src: "/images/office/flexi-desk-workspace.jpg", label: "Flexi desk workspace" },
   spaceDedicatedDesk: { src: "/images/office/dedicated-desk-hallway.jpg", label: "Dedicated desk with storage" },
   spacePrivateOffice: { src: "/images/office/private-office-glass.jpg", label: "Private office" },
