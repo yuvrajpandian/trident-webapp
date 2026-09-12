@@ -9,10 +9,12 @@ import {
   heroBadges,
   routeFinder,
   processSteps,
-  packages,
+  bundles,
   whyDubai,
+  indiaFounders,
   testimonials,
   site,
+  whatsappLink,
 } from "@/lib/site";
 
 export default function HomePage() {
@@ -24,7 +26,8 @@ export default function HomePage() {
       <Journey />
       <ServicesTeaser />
       <WhyDubai />
-      <Packages />
+      <Bundles />
+      <IndiaFoundersSection />
       <AboutPreview />
       <Testimonials />
       <CtaBand />
@@ -153,6 +156,18 @@ function Solutions() {
                 <h3 className="font-display text-xl font-bold text-ink-900">
                   {s.title}
                 </h3>
+                {s.price && (
+                  <div className="mt-2 flex items-baseline gap-1.5">
+                    <span className="font-display text-lg font-bold text-gold-600">
+                      {s.price}
+                    </span>
+                    {s.priceNote && (
+                      <span className="text-xs text-ink-700/55">
+                        {s.priceNote}
+                      </span>
+                    )}
+                  </div>
+                )}
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-700/65">
                   {s.short}
                 </p>
@@ -241,28 +256,53 @@ function ServicesTeaser() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
-            <Link
-              key={s.slug}
-              href={`/services/#${s.slug}`}
-              className="group flex flex-col rounded-2xl border border-cream-200 bg-cream-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:shadow-ink-900/5"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
-                <Icon name={s.icon} className="h-5 w-5" />
-              </span>
-              <h3 className="mt-4 font-semibold text-ink-900">{s.title}</h3>
-              <p className="mt-2 flex-1 text-xs leading-relaxed text-ink-700/65">
-                {s.short}
-              </p>
-              <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-gold-600">
-                Learn More
-                <Icon
-                  name="arrowRight"
-                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
-                />
-              </span>
-            </Link>
-          ))}
+          {services
+            .filter((s) =>
+              ["company-formation", "pro-visa-services", "golden-visa", "bank-account"].includes(
+                s.slug
+              )
+            )
+            .map((s) => (
+              <Link
+                key={s.slug}
+                href={`/services/#${s.slug}`}
+                className="group flex flex-col rounded-2xl border border-cream-200 bg-cream-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:shadow-ink-900/5"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
+                    <Icon name={s.icon} className="h-5 w-5" />
+                  </span>
+                  {s.partnerDelivered && (
+                    <span className="mt-1 text-[0.6rem] font-bold uppercase tracking-wider text-ink-700/45">
+                      Via Partner
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-4 font-semibold text-ink-900">{s.title}</h3>
+                {s.price && (
+                  <div className="mt-1.5 flex items-baseline gap-1">
+                    <span className="text-sm font-bold text-gold-600">
+                      {s.price}
+                    </span>
+                    {s.priceNote && (
+                      <span className="text-[0.65rem] text-ink-700/55">
+                        {s.priceNote}
+                      </span>
+                    )}
+                  </div>
+                )}
+                <p className="mt-2 flex-1 text-xs leading-relaxed text-ink-700/65">
+                  {s.short}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-gold-600">
+                  Learn More
+                  <Icon
+                    name="arrowRight"
+                    className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                  />
+                </span>
+              </Link>
+            ))}
         </div>
       </Container>
     </section>
@@ -320,23 +360,23 @@ function WhyDubai() {
   );
 }
 
-/* ------------------------------------------------------------- Packages -- */
-function Packages() {
+/* -------------------------------------------------------------- Bundles -- */
+function Bundles() {
   return (
-    <section id="packages" className="scroll-mt-24 bg-white py-24">
+    <section id="bundles" className="scroll-mt-24 bg-white py-24">
       <Container>
         <SectionHeading
           eyebrow="A Simpler Way to Compare"
           title="Start with the level of support you need."
-          intro="These are starting points, not fixed offers — every quote is tailored to your business activity and visa needs."
+          intro="Transparent, fixed-fee bundles — pick the one that matches where you are today. Government and partner fees are called out separately, never hidden in the headline price."
           center
         />
 
-        <div className="mt-14 grid gap-7 lg:grid-cols-3">
-          {packages.map((p) => (
+        <div className="mt-14 grid gap-7 lg:grid-cols-4">
+          {bundles.map((p) => (
             <div
-              key={p.name}
-              className={`relative flex flex-col rounded-2xl border p-8 ${
+              key={p.slug}
+              className={`relative flex flex-col rounded-2xl border p-7 ${
                 p.highlight
                   ? "border-gold-400 bg-ink-950 text-white shadow-2xl shadow-ink-900/20 lg:-translate-y-3"
                   : "border-cream-200 bg-cream-50"
@@ -360,8 +400,28 @@ function Packages() {
               >
                 {p.name}
               </h3>
+
+              <div className="mt-3 flex items-baseline gap-1.5">
+                <span
+                  className={`font-display text-3xl font-bold ${
+                    p.highlight ? "text-white" : "text-ink-900"
+                  }`}
+                >
+                  {p.price}
+                </span>
+              </div>
+              {p.priceNote && (
+                <span
+                  className={`text-xs ${
+                    p.highlight ? "text-cream-100/60" : "text-ink-700/55"
+                  }`}
+                >
+                  {p.priceNote}
+                </span>
+              )}
+
               <p
-                className={`mt-2 text-sm ${
+                className={`mt-3 text-sm ${
                   p.highlight ? "text-cream-100/70" : "text-ink-700/65"
                 }`}
               >
@@ -400,18 +460,80 @@ function Packages() {
                 >
                   {p.cta}
                 </Button>
+                {p.note && (
+                  <p
+                    className={`mt-3 text-center text-xs ${
+                      p.highlight ? "text-cream-100/55" : "text-ink-700/50"
+                    }`}
+                  >
+                    {p.note}
+                  </p>
+                )}
               </div>
             </div>
           ))}
         </div>
 
         <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-ink-700/55">
-          Every quote is tailored to your business activity, visa count and
-          workspace needs.{" "}
+          Prices shown are our published bundle rates — government fees and
+          partner-delivered add-ons are called out separately.{" "}
           <Link href="/contact/" className="font-semibold text-gold-600 hover:underline">
-            Contact us for an exact, all-inclusive price.
+            Contact us for an exact, all-inclusive quote.
           </Link>
         </p>
+      </Container>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------ India Founders --- */
+function IndiaFoundersSection() {
+  return (
+    <section className="relative overflow-hidden bg-ink-950 py-24">
+      <div className="pointer-events-none absolute -bottom-24 left-0 h-80 w-80 rounded-full bg-gold-500/10 blur-3xl" />
+      <Container className="relative grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-gold-500">
+            {indiaFounders.eyebrow}
+          </span>
+          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
+            {indiaFounders.title}
+          </h2>
+          <p className="mt-5 leading-relaxed text-cream-100/75">
+            {indiaFounders.intro}
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappLink("Hi, I'd like to ask about remote company setup from India.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#25D366] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white transition hover:brightness-105"
+            >
+              <Icon name="whatsapp" className="h-4 w-4" />
+              {indiaFounders.cta}
+            </a>
+            <Button href="/india-founders/" variant="outlineLight">
+              Learn More
+            </Button>
+          </div>
+        </div>
+
+        <div className="grid gap-5 sm:grid-cols-2">
+          {indiaFounders.points.map((pt) => (
+            <div
+              key={pt.title}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-gold-500/15 text-gold-400">
+                <Icon name={pt.icon} className="h-5 w-5" />
+              </span>
+              <h3 className="mt-4 font-semibold text-white">{pt.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-cream-100/65">
+                {pt.text}
+              </p>
+            </div>
+          ))}
+        </div>
       </Container>
     </section>
   );

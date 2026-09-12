@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/",
     "/spaces/",
     "/why-dubai/",
+    "/india-founders/",
     "/blog/",
     "/contact/",
   ];

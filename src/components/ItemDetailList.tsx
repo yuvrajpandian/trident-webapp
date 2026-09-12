@@ -23,12 +23,34 @@ export function ItemDetailList({ items }: { items: Item[] }) {
 
             {/* Text */}
             <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
-                <Icon name={item.icon} className="h-6 w-6" />
-              </span>
+              <div className="flex items-center justify-between gap-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
+                  <Icon name={item.icon} className="h-6 w-6" />
+                </span>
+                {item.partnerDelivered && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-ink-700/70">
+                    <Icon name="shield" className="h-3 w-3" />
+                    Via Licensed Partner
+                  </span>
+                )}
+              </div>
               <h2 className="mt-5 font-display text-3xl font-bold text-ink-900">
                 {item.title}
               </h2>
+
+              {item.price && (
+                <div className="mt-3 flex items-baseline gap-2">
+                  <span className="font-display text-2xl font-bold text-gold-600">
+                    {item.price}
+                  </span>
+                  {item.priceNote && (
+                    <span className="text-sm text-ink-700/60">
+                      {item.priceNote}
+                    </span>
+                  )}
+                </div>
+              )}
+
               <p className="mt-4 leading-relaxed text-ink-700/70">{item.blurb}</p>
 
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">

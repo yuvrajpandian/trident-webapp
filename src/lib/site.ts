@@ -4,6 +4,15 @@
  * Single source of truth for the website. Update the values below and the whole
  * site updates. Lines marked  // TODO  are placeholders to confirm/replace.
  *
+ * PRODUCT & PRICING STRUCTURE (Sept 2026): restructured from a market-research
+ * report — see /product-decision-report for the source. Company Formation and
+ * Mainland Expansion are delivered directly by Trident (in-house). PRO/Visa,
+ * Golden Visa, Corporate Tax/VAT, Accounting and Bank Account items are marked
+ * `partnerDelivered: true` and are facilitated through licensed partners — never
+ * billed as Trident's own regulated service. Bundle prices are real proposed
+ * pricing, not placeholders — update `bundles` and item `price` fields directly
+ * as pricing is finalised.
+ *
  * IMAGES: every photo on the site is an entry in the `images` map at the bottom.
  * Drop your real photo into /public/images and set its path here (e.g.
  * "/images/hero.jpg"). While a path is empty (""), an elegant labelled
@@ -61,6 +70,7 @@ export const navLinks = [
   { label: "Services", href: "/services/" },
   { label: "Spaces", href: "/spaces/" },
   { label: "Why Dubai", href: "/why-dubai/" },
+  { label: "India Founders", href: "/india-founders/" },
   { label: "Blog", href: "/blog/" },
   { label: "Contact Us", href: "/contact/" },
 ];
@@ -68,11 +78,11 @@ export const navLinks = [
 // ---- Hero trust badges ----------------------------------------------------
 export const heroBadges = [
   { icon: "building", title: "Prime Locations", text: "in Dubai" },
-  { icon: "docCheck", title: "Flexible Solutions", text: "for Every Business" },
+  { icon: "bolt", title: "15–30 Min Ejari", text: "Not Days" },
   { icon: "support", title: "Dedicated Support", text: "Every Step of the Way" },
 ];
 
-// ---- Spaces (the "Our Solutions" cards) -----------------------------------
+// ---- Shared product/service item shape -------------------------------------
 export type Item = {
   slug: string;
   icon: string;
@@ -81,116 +91,170 @@ export type Item = {
   blurb: string;
   features: string[];
   image: string; // key in `images`
+  price?: string; // e.g. "AED 4,500" — real proposed price, shown on-site
+  priceNote?: string; // e.g. "per year" or "+ government fees"
+  partnerDelivered?: boolean; // shows a "Delivered via licensed partner" disclosure
 };
 
+// ---- Spaces (workspace & Ejari products — all delivered directly) ---------
 export const spaces: Item[] = [
+  {
+    slug: "ejari-fast-track",
+    icon: "bolt",
+    title: "Ejari Fast-Track",
+    short: "Already have a company or space? Get compliant Ejari in 15–30 minutes.",
+    blurb:
+      "If you already have a company or workspace elsewhere and just need fast, compliant Ejari registration, this is the quickest route — issued in as little as 15–30 minutes, with light desk access included.",
+    features: [
+      "Ejari issued in 15–30 minutes",
+      "Light shared-desk access included",
+      "No long-term desk commitment required",
+      "Ideal for renewals or switching centres",
+      "Full DLD / Trakheesi compliance",
+    ],
+    image: "spaceEjari",
+    price: "AED 3,200",
+    priceNote: "per year",
+  },
+  {
+    slug: "virtual-office",
+    icon: "mail",
+    title: "Virtual Office + Ejari",
+    short: "A prestigious Dubai address with fast, compliant Ejari.",
+    blurb:
+      "Get a prestigious Dubai business address, professional mail handling, and call answering — with Ejari included, so your license stays fully compliant without the cost of a full-time office.",
+    features: [
+      "Prestigious Dubai business address",
+      "Ejari tenancy contract included",
+      "Mail collection & forwarding",
+      "Dedicated phone & call handling",
+      "2 hrs/month meeting room credit",
+    ],
+    image: "spaceVirtualOffice",
+    price: "AED 4,500",
+    priceNote: "per year",
+  },
   {
     slug: "flexi-desk",
     icon: "deskLamp",
-    title: "Flexi Desk",
-    short: "Professional workspace with Ejari for your business setup.",
+    title: "Flexi Desk + Ejari",
+    short: "A real place to work, with Ejari and shared-desk access.",
     blurb:
-      "A cost-effective, professional workspace that comes with an Ejari tenancy contract — ideal for new companies that need a licensed address and a place to work.",
+      "A cost-effective, professional workspace that comes with an Ejari tenancy contract — ideal for founders who want a real place to work without committing to a private office.",
     features: [
-      "Ejari tenancy contract for licensing",
-      "Access to shared professional workspace",
+      "Ejari tenancy contract included",
+      "Shared professional workspace access",
       "High-speed internet & utilities included",
-      "Use of reception & common areas",
-      "Meeting room credits",
+      "4 hrs/month meeting room credit",
+      "Upgrade path to a Dedicated Desk",
     ],
     image: "spaceFlexiDesk",
+    price: "AED 7,900",
+    priceNote: "per year",
+  },
+  {
+    slug: "dedicated-desk",
+    icon: "doorOffice",
+    title: "Dedicated Desk + Ejari",
+    short: "Your own assigned desk, with lockable storage and Ejari.",
+    blurb:
+      "A permanently assigned desk with lockable storage — for founders and small teams who want the consistency of their own spot without the cost of a private office.",
+    features: [
+      "Permanently assigned desk",
+      "Lockable storage included",
+      "Ejari tenancy contract included",
+      "6 hrs/month meeting room credit",
+      "Priority upgrade path to Private Office",
+    ],
+    image: "spaceDedicatedDesk",
+    price: "AED 13,500",
+    priceNote: "per year",
   },
   {
     slug: "private-office",
-    icon: "doorOffice",
+    icon: "diamond",
     title: "Private Office",
-    short: "Fully furnished private offices tailored for your team.",
+    short: "Fully furnished private offices, priced per seat.",
     blurb:
-      "Move into a fully-furnished, lockable private office sized for your team. Reception, utilities, internet and maintenance are all taken care of.",
+      "Move into a fully-furnished, lockable private office sized for your team. Reception, utilities, internet and maintenance are all taken care of — priced per seat for teams of any size.",
     features: [
       "Fully furnished & move-in ready",
-      "Lockable, dedicated to your team",
+      "Priced per seat — scales with your team",
       "Reception & mail handling included",
-      "Scalable as your team grows",
       "Ejari tenancy for visas & licensing",
+      "Custom quote for larger teams",
     ],
     image: "spacePrivateOffice",
+    price: "From AED 2,200",
+    priceNote: "per seat, per month",
   },
   {
     slug: "meeting-room",
     icon: "users",
     title: "Meeting Room",
-    short: "Modern meeting rooms equipped for successful collaborations.",
+    short: "Book by the hour or day — no membership required.",
     blurb:
-      "Book modern, well-equipped meeting and conference rooms by the hour or day — complete with displays, video conferencing, and refreshment service.",
+      "Modern, well-equipped meeting and conference rooms available by the hour or day. Included as monthly credits with every workspace plan, or booked à la carte if you're not yet a member.",
     features: [
       "Book by the hour or full day",
       "Screens & video-conferencing ready",
       "Seats 4–20 guests",
-      "Refreshments & reception support",
+      "Included as credits with every workspace plan",
       "Central, easy-to-reach location",
     ],
     image: "spaceMeetingRoom",
-  },
-  {
-    slug: "virtual-office",
-    icon: "mail",
-    title: "Virtual Office",
-    short: "Establish your business presence with a prestigious Dubai address.",
-    blurb:
-      "Get a prestigious Dubai business address, professional mail handling, and call answering — without the cost of a full-time physical office.",
-    features: [
-      "Prestigious Dubai business address",
-      "Mail collection & forwarding",
-      "Dedicated phone & call handling",
-      "Registered address for your license",
-      "Meeting rooms on demand",
-    ],
-    image: "spaceVirtualOffice",
-  },
-  {
-    slug: "business-setup",
-    icon: "diamond",
-    title: "Business Setup",
-    short: "End-to-end company formation and PRO services.",
-    blurb:
-      "From trade license to visas and bank account, our consultants handle your entire Dubai company formation so you can start operating quickly and compliantly.",
-    features: [
-      "Mainland trade license setup & renewal",
-      "PRO & visa services",
-      "Bank account opening assistance",
-      "Corporate compliance & accounting",
-      "One dedicated advisor, end to end",
-    ],
-    image: "spaceBusinessSetup",
+    price: "AED 120/hr",
+    priceNote: "or AED 750/day, non-members",
   },
 ];
 
-// ---- Services (the business-setup services page) --------------------------
+// ---- Services ---------------------------------------------------------------
+// Company Formation & Mainland Expansion: delivered directly by Trident.
+// Everything else: facilitated through licensed partners (partnerDelivered).
 export const services: Item[] = [
   {
     slug: "company-formation",
     icon: "building",
     title: "Company Formation & Trade License",
-    short: "Mainland setup, licensing & renewals.",
+    short: "Delivered directly by Trident — mainland setup, start to finish.",
     blurb:
-      "End-to-end Dubai mainland company formation — choosing the right structure and activity, securing approvals, and issuing and renewing your trade license.",
+      "End-to-end Dubai mainland company formation, delivered directly by our own team — choosing the right structure and activity, securing approvals, and issuing your trade license alongside your Ejari-ready workspace.",
     features: [
       "Mainland trade license setup & renewal",
       "Business activity selection & DED approvals",
       "Memorandum of Association (MOA) drafting",
       "Name reservation & initial approvals",
-      "License amendments & activity additions",
+      "Delivered in-house — one team, start to finish",
     ],
     image: "serviceFormation",
+    price: "AED 9,900",
+    priceNote: "+ government fees (activity-dependent)",
+  },
+  {
+    slug: "mainland-expansion",
+    icon: "rocket",
+    title: "Mainland Expansion",
+    short: "Take your free-zone company onto Dubai mainland (ECR 11/2025).",
+    blurb:
+      "Under Executive Council Resolution 11/2025, most free-zone companies can now open a branch on Dubai mainland. We provide the mainland Ejari-ready address you need and coordinate the branch filing directly.",
+    features: [
+      "Mainland branch licence coordination",
+      "Ejari-ready registered address included",
+      "Free-zone NOC guidance",
+      "DET approval coordination",
+      "Delivered in-house — one team, start to finish",
+    ],
+    image: "serviceExpansion",
+    price: "From AED 12,900",
+    priceNote: "+ government fees",
   },
   {
     slug: "pro-visa-services",
     icon: "passport",
     title: "PRO & Visa Services",
-    short: "Visas, Emirates ID & government liaison.",
+    short: "Visas, Emirates ID & government liaison — via licensed partner.",
     blurb:
-      "Our PRO team handles all your government paperwork — investor and employment visas, Emirates ID, medical typing, and document attestation — accurately and on time.",
+      "Our licensed PRO partner handles all your government paperwork — investor and employment visas, Emirates ID, medical typing, and document attestation — accurately and on time.",
     features: [
       "Investor, partner & employment visas",
       "Visa renewals, cancellations & status changes",
@@ -199,38 +263,85 @@ export const services: Item[] = [
       "Government liaison (GDRFA, MOHRE, DED)",
     ],
     image: "serviceVisa",
+    price: "From AED 2,800",
+    priceNote: "per visa",
+    partnerDelivered: true,
+  },
+  {
+    slug: "golden-visa",
+    icon: "diamond",
+    title: "Golden & Investor Visa Track",
+    short: "Long-term UAE residency — via licensed immigration partner.",
+    blurb:
+      "We coordinate your Golden Visa or investor visa application through our licensed immigration partner, from eligibility review through to Emirates ID issuance.",
+    features: [
+      "Eligibility review & document preparation",
+      "Coordination via ICP / GDRFA-linked partner",
+      "Investor & Golden Visa tracks",
+      "Family sponsorship guidance",
+      "Status updates throughout",
+    ],
+    image: "serviceGoldenVisa",
+    price: "From AED 4,500",
+    priceNote: "+ government fees",
+    partnerDelivered: true,
   },
   {
     slug: "corporate-services",
     icon: "shield",
-    title: "Corporate Services",
-    short: "Accounting, VAT, corporate tax & compliance.",
+    title: "Corporate Tax & VAT",
+    short: "Registration and ongoing compliance — via FTA-registered agent.",
     blurb:
-      "Keep your business compliant and running smoothly — bookkeeping, VAT and corporate tax filing, auditing, and ongoing regulatory compliance, all under one roof.",
+      "Corporate tax and VAT registration and filing, delivered through our FTA-registered tax agent partner — keeping your business compliant and audit-ready.",
     features: [
-      "Accounting & bookkeeping",
+      "Corporate tax registration",
       "VAT registration & filing",
-      "Corporate tax registration & compliance",
-      "Annual auditing & advisory",
-      "Payroll & WPS support",
+      "Ongoing compliance retainer",
+      "Annual filing support",
+      "FTA-registered tax agent partner",
     ],
     image: "serviceCorporate",
+    price: "AED 2,500",
+    priceNote: "registration + AED 500/mo retainer",
+    partnerDelivered: true,
+  },
+  {
+    slug: "accounting",
+    icon: "docCheck",
+    title: "Accounting & Bookkeeping",
+    short: "Monthly bookkeeping and reporting — via partner firm.",
+    blurb:
+      "Keep your books accurate and your filings on time with monthly bookkeeping, reporting, and payroll support, delivered through our accounting partner.",
+    features: [
+      "Monthly bookkeeping",
+      "VAT-ready reporting",
+      "Payroll & WPS support",
+      "Annual financial statements",
+      "Delivered via partner accounting firm",
+    ],
+    image: "serviceAccounting",
+    price: "From AED 750",
+    priceNote: "per month",
+    partnerDelivered: true,
   },
   {
     slug: "bank-account",
     icon: "wallet",
-    title: "Bank Account Opening",
-    short: "Corporate bank account introductions.",
+    title: "Bank Account Concierge",
+    short: "Documentation and introductions — final approval is the bank's.",
     blurb:
-      "We introduce you to leading UAE banks and prepare your application to maximise approval chances, so you can start transacting as soon as your company is live.",
+      "We prepare your application and introduce you to relationship managers at leading UAE banks. Approval always remains at the bank's sole discretion.",
     features: [
       "Guidance on the right bank for you",
       "Application preparation & document review",
       "Introductions to relationship managers",
       "Support through compliance checks",
-      "Ongoing banking advisory",
+      "Facilitation only — approval is the bank's decision",
     ],
     image: "serviceBank",
+    price: "AED 1,500",
+    priceNote: "flat facilitation fee",
+    partnerDelivered: true,
   },
 ];
 
@@ -326,62 +437,170 @@ export const processSteps = [
   },
 ];
 
-// ---- Packages ---------------------------------------------------------------
-// Tiers by level of support, not fixed prices — every quote is tailored, so we
-// deliberately show "custom quote" CTAs rather than published figures.
-export type Package = {
+// ---- Bundles ("A Simpler Way to Compare") -----------------------------------
+// Real proposed bundle pricing (from a market-research restructure, Sept 2026),
+// not placeholders. Company Formation is delivered in-house; the "ask us about
+// instalments" note is deliberate — no financing partner is confirmed yet, so we
+// don't promise interest-free terms until one is signed.
+export type Bundle = {
+  slug: string;
   tierLabel: string;
   name: string;
   positioning: string;
+  price: string;
+  priceNote?: string;
   features: string[];
   cta: string;
   href: string;
   highlight?: boolean;
+  note?: string;
 };
 
-export const packages: Package[] = [
+export const bundles: Bundle[] = [
   {
-    tierLabel: "Business Presence",
-    name: "Establish",
+    slug: "address",
+    tierLabel: "Compliance Only",
+    name: "Address",
     positioning:
-      "For businesses exploring a Dubai address and a lighter-touch workspace solution.",
+      "Already have a company? Just need a compliant address and fast Ejari.",
+    price: "AED 4,500",
+    priceNote: "per year",
     features: [
       "Virtual office & registered address",
+      "Ejari tenancy included",
       "Mail handling & call answering",
-      "Ejari tenancy for licensing",
-      "Meeting room credits",
+      "2 hrs/month meeting room credit",
     ],
     cta: "Explore Virtual Office",
     href: "/spaces/#virtual-office",
   },
   {
+    slug: "work",
     tierLabel: "Most Flexible",
     name: "Work",
-    positioning:
-      "For founders who want a usable workspace with the right address and support options.",
+    positioning: "Need a real place to work, with the right address built in.",
+    price: "AED 7,900",
+    priceNote: "per year",
     features: [
-      "Flexi desk & coworking access",
-      "Ejari tenancy included",
-      "Meeting & conference rooms",
-      "Company setup add-ons",
+      "Flexi Desk & Ejari included",
+      "4 hrs/month meeting room credit",
+      "Upgrade path to Dedicated Desk",
+      "Company setup add-ons available",
     ],
     cta: "Compare Workspaces",
     href: "/spaces/",
     highlight: true,
   },
   {
-    tierLabel: "Dedicated Space",
-    name: "Grow",
-    positioning:
-      "For teams that need privacy, a professional base and room to expand.",
+    slug: "launch",
+    tierLabel: "New Founders",
+    name: "Launch",
+    positioning: "Brand-new company — license, workspace and Ejari, one bill.",
+    price: "AED 14,500",
+    priceNote: "all-in, Year 1 · govt fees excl.",
     features: [
-      "Fully furnished private office",
-      "Team-size matching",
-      "Full business services add-on",
-      "Tour before you commit",
+      "Mainland company formation (in-house)",
+      "Flexi Desk + Ejari, 12 months",
+      "1 investor visa facilitation",
+      "Bank account concierge",
     ],
-    cta: "Check Availability",
-    href: "/spaces/#private-office",
+    cta: "Start My Company",
+    href: "/services/#company-formation",
+    note: "Ask us about instalment options.",
+  },
+  {
+    slug: "launch-grow",
+    tierLabel: "Complete",
+    name: "Launch + Grow",
+    positioning:
+      "Everything handled — ideal for remote and India-based founders.",
+    price: "AED 24,900",
+    priceNote: "all-in, Year 1 · govt/partner fees excl.",
+    features: [
+      "Everything in Launch",
+      "Dedicated Desk (upgraded workspace)",
+      "Corporate tax & VAT registration",
+      "1st-year accounting discount + Golden Visa consult",
+    ],
+    cta: "Talk to an Advisor",
+    href: "/contact/",
+    note: "Ask us about instalment options.",
+  },
+];
+
+// ---- India Founders ---------------------------------------------------------
+// The positioning wedge from the market-research report: no Bur Dubai centre
+// combines fast Ejari + transparent pricing + India-founder onboarding.
+export const indiaFounders = {
+  eyebrow: "For India-Based Founders",
+  title: "Launch your Dubai company without flying in.",
+  intro:
+    "You don't need to be in Dubai to start your company here. We handle the setup remotely, and WhatsApp is our primary channel from your first question to your trade license.",
+  points: [
+    {
+      icon: "docCheck",
+      title: "Remote, POA-based onboarding",
+      text: "Sign via a notarised Power of Attorney — no need to travel to Dubai for company formation.",
+    },
+    {
+      icon: "whatsapp",
+      title: "WhatsApp-first service",
+      text: "One WhatsApp thread from enquiry to trade license — document collection, updates, everything in one place.",
+    },
+    {
+      icon: "wallet",
+      title: "Rupee-equivalent pricing on request",
+      text: "Ask us for an indicative rupee price alongside any AED quote.",
+    },
+    {
+      icon: "bolt",
+      title: "The same fast, compliant Ejari",
+      text: "Every Trident client gets 15–30 minute Ejari issuance — without needing to be physically present.",
+    },
+  ],
+  cta: "Ask About Remote Setup",
+};
+
+// ---- Remote onboarding steps (India Founders page) -------------------------
+export const remoteOnboardingSteps = [
+  {
+    n: "01",
+    title: "Message us on WhatsApp",
+    text: "Tell us your business activity and goals. One thread, from first question to trade license.",
+  },
+  {
+    n: "02",
+    title: "Send your documents",
+    text: "Share scanned passport, photos and activity details — we tell you exactly what's needed, nothing more.",
+  },
+  {
+    n: "03",
+    title: "Sign a notarised Power of Attorney",
+    text: "A local notary in India certifies your POA, so our team can sign on your behalf in Dubai.",
+  },
+  {
+    n: "04",
+    title: "We file, you get updates",
+    text: "Trade license, Ejari and any visa filing proceed while you get status updates over WhatsApp.",
+  },
+];
+
+export const indiaFaqs = [
+  {
+    q: "Do I need to travel to Dubai to set up my company?",
+    a: "No. With a notarised Power of Attorney, our team can complete company formation and Ejari registration on your behalf. Some steps — like certain visa medical tests or Emirates ID biometrics — do require your physical presence in the UAE, and we'll flag those clearly upfront.",
+  },
+  {
+    q: "What is a Power of Attorney (POA), and how do I get one from India?",
+    a: "A POA is a notarised document authorising a representative to sign on your behalf. We provide the exact wording needed, you get it notarised (and apostilled, if required) in India, and courier it to us — we guide you through each step over WhatsApp.",
+  },
+  {
+    q: "Can I see pricing in rupees?",
+    a: "Yes — ask us for an indicative rupee equivalent alongside any AED quote. We publish AED as our primary pricing and provide a rupee reference on request, since exchange rates move regularly.",
+  },
+  {
+    q: "How do you communicate with clients based in India?",
+    a: "WhatsApp is our primary channel — from your first enquiry through document collection, status updates, and after your company is formed. No need to juggle emails across time zones.",
   },
 ];
 
@@ -429,6 +648,10 @@ export const faqs = [
     q: "Can you guarantee my bank account, license or visa will be approved?",
     a: "No approval can ever be guaranteed — final decisions always rest with the relevant bank or government authority. What we guarantee is thorough preparation and honest guidance, to give your application the best possible chance.",
   },
+  {
+    q: "Which of your services are delivered by Trident directly, and which through partners?",
+    a: "Company Formation, Mainland Expansion, and every workspace and Ejari product are delivered directly by our own team. PRO & Visa Services, Golden Visa, Corporate Tax & VAT, Accounting, and Bank Account Concierge are facilitated through licensed partners — we coordinate them closely, but they are never billed as Trident's own regulated service.",
+  },
 ];
 
 // ---- Blog (placeholder articles) ------------------------------------------
@@ -470,16 +693,22 @@ export const images: Record<string, { src: string; label: string }> = {
   aboutReception: { src: "", label: "Reception desk with Trident logo" },
   whyDubai: { src: "", label: "Dubai skyline at night" },
 
+  spaceEjari: { src: "", label: "Fast Ejari registration desk" },
   spaceFlexiDesk: { src: "", label: "Flexi desk workspace" },
+  spaceDedicatedDesk: { src: "", label: "Dedicated desk with storage" },
   spacePrivateOffice: { src: "", label: "Private office" },
   spaceMeetingRoom: { src: "", label: "Meeting room" },
   spaceVirtualOffice: { src: "", label: "Virtual office lounge" },
-  spaceBusinessSetup: { src: "", label: "Business setup consultation" },
 
   serviceFormation: { src: "", label: "Company formation" },
+  serviceExpansion: { src: "", label: "Mainland expansion consultation" },
   serviceVisa: { src: "", label: "PRO & visa services" },
-  serviceCorporate: { src: "", label: "Corporate services" },
+  serviceGoldenVisa: { src: "", label: "Golden visa consultation" },
+  serviceCorporate: { src: "", label: "Corporate tax & VAT" },
+  serviceAccounting: { src: "", label: "Accounting & bookkeeping" },
   serviceBank: { src: "", label: "Bank account opening" },
+
+  indiaFounders: { src: "", label: "Remote onboarding for India-based founders" },
 
   blog1: { src: "", label: "Article cover" },
   blog2: { src: "", label: "Article cover" },
