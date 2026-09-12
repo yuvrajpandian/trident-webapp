@@ -176,19 +176,21 @@ export const spaces: Item[] = [
     slug: "private-office",
     icon: "diamond",
     title: "Private Office",
-    short: "Fully furnished private cabins, rented annually.",
+    short: "Fully furnished private cabins, rented annually — pricing varies by size.",
     blurb:
-      "Move into a fully-furnished, lockable private cabin sized for your team. Reception, utilities, internet and maintenance are all taken care of — rented as an annual cabin lease, with instalment payment available.",
+      "Move into a fully-furnished, lockable private cabin sized for your team. Reception, utilities, internet and maintenance are all taken care of — rented as an annual cabin lease, with instalment payment available. Pricing varies by cabin size — get in touch for a quote framed at an approachable monthly-equivalent rate.",
     features: [
       "Fully furnished & move-in ready",
       "Annual rental per cabin — not per seat",
       "Reception & mail handling included",
       "Ejari tenancy for visas & licensing",
-      "Custom quote for larger cabins",
+      "Custom quote by cabin size",
     ],
     image: "spacePrivateOffice",
-    price: "From AED 38,000",
-    priceNote: "per year, per cabin",
+    // TODO: replace with real per-cabin-size pricing once the full price
+    // list is finalised — deliberately no AED figure shown yet.
+    price: "Pricing Varies by Cabin Size",
+    priceNote: "starting from an approachable monthly-equivalent rate",
     note: "Instalment payment plans available — ask us for options.",
   },
   {
