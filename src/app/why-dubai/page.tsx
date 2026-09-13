@@ -3,6 +3,7 @@ import { Container, SectionHeading } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaBand } from "@/components/CtaBand";
+import { Reveal } from "@/components/Reveal";
 import { whyDubai } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -57,14 +58,14 @@ export default function WhyDubaiPage() {
       <section className="bg-ink-950 py-16">
         <Container>
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 lg:grid-cols-4">
-            {whyDubai.stats.map((s) => (
-              <div key={s.label} className="bg-ink-900/40 p-7 text-center">
+            {whyDubai.stats.map((s, i) => (
+              <Reveal key={s.label} delay={i * 80} className="bg-ink-900/40 p-7 text-center">
                 <Icon name={s.icon} className="mx-auto h-8 w-8 text-gold-500" />
                 <div className="mt-4 font-display text-3xl font-bold text-white">
                   {s.value}
                 </div>
                 <div className="mt-1 text-sm text-cream-100/65">{s.label}</div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -73,27 +74,28 @@ export default function WhyDubaiPage() {
       {/* Detail grid */}
       <section className="bg-white py-24">
         <Container>
-          <SectionHeading
-            eyebrow="The Advantages"
-            title="Everything in your favour"
-            center
-          />
+          <Reveal>
+            <SectionHeading
+              eyebrow="The Advantages"
+              title="Everything in your favour"
+              center
+            />
+          </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {detail.map((d) => (
-              <div
-                key={d.title}
-                className="rounded-2xl border border-cream-200 bg-cream-50 p-7 transition hover:bg-white hover:shadow-lg hover:shadow-ink-900/5"
-              >
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
-                  <Icon name={d.icon} className="h-6 w-6" />
-                </span>
-                <h3 className="mt-5 font-display text-xl font-bold text-ink-900">
-                  {d.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-700/70">
-                  {d.text}
-                </p>
-              </div>
+            {detail.map((d, i) => (
+              <Reveal key={d.title} delay={(i % 3) * 90}>
+                <div className="card-premium h-full rounded-2xl bg-cream-50 p-7 transition hover:bg-white">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
+                    <Icon name={d.icon} className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-5 font-display text-xl font-bold text-ink-900">
+                    {d.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-700/70">
+                    {d.text}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </Container>

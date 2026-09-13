@@ -1,6 +1,7 @@
 import { Container, Button } from "./ui";
 import { Icon } from "./Icon";
 import { Media } from "./Media";
+import { Reveal } from "./Reveal";
 import { whatsappLink, type Item } from "@/lib/site";
 
 /* Alternating image + feature-list sections, shared by Services and Spaces. */
@@ -9,7 +10,7 @@ export function ItemDetailList({ items }: { items: Item[] }) {
     <section className="bg-white py-20">
       <Container className="space-y-20">
         {items.map((item, i) => (
-          <div
+          <Reveal
             key={item.slug}
             id={item.slug}
             className="grid scroll-mt-28 gap-10 lg:grid-cols-2 lg:items-center"
@@ -56,7 +57,7 @@ export function ItemDetailList({ items }: { items: Item[] }) {
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {item.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-500/15 text-gold-600">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink-900/8 text-ink-700">
                       <Icon name="check" className="h-3.5 w-3.5" />
                     </span>
                     <span className="text-sm text-ink-700/80">{f}</span>
@@ -81,7 +82,7 @@ export function ItemDetailList({ items }: { items: Item[] }) {
                 <p className="mt-3 text-xs text-ink-700/55">{item.note}</p>
               )}
             </div>
-          </div>
+          </Reveal>
         ))}
       </Container>
     </section>

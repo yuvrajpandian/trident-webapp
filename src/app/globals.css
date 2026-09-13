@@ -75,6 +75,25 @@ html {
   background: linear-gradient(90deg, #c2a24e, #8f7030);
 }
 
+/* Unified colour grade applied to every real photo, so renders/photos shot
+   at different times and in different light all read as one cohesive set
+   rather than disparate screenshots. */
+.photo-grade {
+  filter: saturate(0.93) contrast(1.05) brightness(1.015);
+}
+
+/* Soft, floating card treatment — no visible border, just a diffuse shadow
+   that deepens slightly on hover. Reserved for plain content cards (not the
+   image-led cards, which already carry their own shadow via the photo). */
+.card-premium {
+  border: 1px solid rgba(20, 18, 14, 0.06);
+  box-shadow: 0 2px 24px -10px rgba(20, 18, 14, 0.12);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-premium:hover {
+  box-shadow: 0 16px 40px -12px rgba(20, 18, 14, 0.18);
+}
+
 /* Decorative placeholder texture for image stand-ins */
 .placeholder-grid {
   background-image: linear-gradient(

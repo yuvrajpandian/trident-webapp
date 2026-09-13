@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Media } from "@/components/Media";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaBand } from "@/components/CtaBand";
+import { Reveal } from "@/components/Reveal";
 import {
   indiaFounders,
   remoteOnboardingSteps,
@@ -32,12 +33,12 @@ export default function IndiaFoundersPage() {
       {/* Why this works for India founders */}
       <section className="bg-white py-20">
         <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative order-2 lg:order-1">
+          <Reveal className="relative order-2 lg:order-1">
             <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg shadow-ink-900/10">
               <Media imageKey="indiaFounders" rounded="rounded-2xl" />
             </div>
-          </div>
-          <div className="order-1 lg:order-2">
+          </Reveal>
+          <Reveal delay={120} className="order-1 lg:order-2">
             <SectionHeading
               eyebrow="Why Trident Nexus"
               title="Fast Ejari, transparent pricing, and a team that meets you on WhatsApp."
@@ -47,7 +48,7 @@ export default function IndiaFoundersPage() {
               <Icon name="globe" className="h-4 w-4 text-gold-600" />
               Also reachable at tridentnexusdubai.in
             </p>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -55,19 +56,18 @@ export default function IndiaFoundersPage() {
       <section className="bg-cream-50 py-20">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {indiaFounders.points.map((pt) => (
-              <div
-                key={pt.title}
-                className="rounded-2xl border border-cream-200 bg-white p-6"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
-                  <Icon name={pt.icon} className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-semibold text-ink-900">{pt.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-700/70">
-                  {pt.text}
-                </p>
-              </div>
+            {indiaFounders.points.map((pt, i) => (
+              <Reveal key={pt.title} delay={i * 90}>
+                <div className="card-premium h-full rounded-2xl bg-white p-6">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
+                    <Icon name={pt.icon} className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 font-semibold text-ink-900">{pt.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700/70">
+                    {pt.text}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -77,16 +77,18 @@ export default function IndiaFoundersPage() {
       <section className="relative overflow-hidden bg-ink-950 py-24">
         <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-gold-500/10 blur-3xl" />
         <Container className="relative">
-          <SectionHeading
-            eyebrow="How It Works"
-            title={<span className="text-white">Four steps, zero flights.</span>}
-            intro="From your first WhatsApp message to a registered Dubai company — here's exactly what remote onboarding looks like."
-            light
-            center
-          />
+          <Reveal>
+            <SectionHeading
+              eyebrow="How It Works"
+              title={<span className="text-white">Four steps, zero flights.</span>}
+              intro="From your first WhatsApp message to a registered Dubai company — here's exactly what remote onboarding looks like."
+              light
+              center
+            />
+          </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {remoteOnboardingSteps.map((step, i) => (
-              <div key={step.n} className="relative">
+              <Reveal key={step.n} delay={i * 90} className="relative h-full">
                 <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
                   <span className="font-display text-4xl font-bold text-gold-500">
                     {step.n}
@@ -102,7 +104,7 @@ export default function IndiaFoundersPage() {
                     className="absolute -right-4 top-1/2 hidden h-6 w-6 -translate-y-1/2 text-gold-500/60 lg:block"
                   />
                 )}
-              </div>
+              </Reveal>
             ))}
           </div>
           <div className="mt-12 flex justify-center">
@@ -122,17 +124,19 @@ export default function IndiaFoundersPage() {
       {/* Relevant bundles */}
       <section className="bg-white py-24">
         <Container>
-          <SectionHeading
-            eyebrow="Built For Your Journey"
-            title="Launch bundles, priced transparently in AED."
-            intro="Ask us for an indicative rupee equivalent alongside any quote — exchange rates move, so AED stays our published reference price."
-            center
-          />
+          <Reveal>
+            <SectionHeading
+              eyebrow="Built For Your Journey"
+              title="Launch bundles, priced transparently in AED."
+              intro="Ask us for an indicative rupee equivalent alongside any quote — exchange rates move, so AED stays our published reference price."
+              center
+            />
+          </Reveal>
           <div className="mt-14 grid gap-7 sm:grid-cols-2">
-            {launchBundles.map((p) => (
+            {launchBundles.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100} className="h-full">
               <div
-                key={p.slug}
-                className={`relative flex flex-col rounded-2xl border p-8 ${
+                className={`relative flex h-full flex-col rounded-2xl border p-8 ${
                   p.highlight
                     ? "border-gold-400 bg-ink-950 text-white shadow-2xl shadow-ink-900/20"
                     : "border-cream-200 bg-cream-50"
@@ -208,6 +212,7 @@ export default function IndiaFoundersPage() {
                   </Button>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -216,11 +221,11 @@ export default function IndiaFoundersPage() {
       {/* FAQ */}
       <section className="bg-cream-50 py-24">
         <Container>
-          <div className="mx-auto max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl">
             <h2 className="text-center font-display text-3xl font-bold text-ink-900 sm:text-4xl">
               Questions from India-based founders
             </h2>
-            <div className="mt-10 divide-y divide-cream-200 overflow-hidden rounded-2xl border border-cream-200 bg-white">
+            <div className="card-premium mt-10 divide-y divide-cream-200 overflow-hidden rounded-2xl bg-white">
               {indiaFaqs.map((f) => (
                 <details key={f.q} className="group px-6 py-5">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-ink-900">
@@ -235,7 +240,7 @@ export default function IndiaFoundersPage() {
                 </details>
               ))}
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
 

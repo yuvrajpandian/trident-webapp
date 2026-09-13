@@ -3,6 +3,7 @@ import { Container } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 import { PageHeader } from "@/components/PageHeader";
 import { ContactForm } from "@/components/ContactForm";
+import { Reveal } from "@/components/Reveal";
 import { site, bookTourMessage, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default function ContactPage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-5">
             {/* Contact details */}
-            <div className="lg:col-span-2">
+            <Reveal className="lg:col-span-2">
               <h2 className="font-display text-2xl font-bold text-ink-900">Get in touch</h2>
               <p className="mt-3 text-sm leading-relaxed text-ink-700/70">
                 We typically respond within one business day. For the fastest
@@ -70,11 +71,11 @@ export default function ContactPage() {
                   src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&output=embed`}
                 />
               </div>
-            </div>
+            </Reveal>
 
             {/* Form */}
-            <div className="lg:col-span-3">
-              <div className="rounded-3xl border border-cream-200 bg-cream-50 p-7 sm:p-9">
+            <Reveal delay={120} className="lg:col-span-3">
+              <div className="card-premium rounded-3xl bg-cream-50 p-7 sm:p-9">
                 <h2 className="font-display text-2xl font-bold text-ink-900">
                   Book a tour or request a quote
                 </h2>
@@ -86,7 +87,7 @@ export default function ContactPage() {
                   <ContactForm />
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </Container>
       </section>

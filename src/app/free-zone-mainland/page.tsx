@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Media } from "@/components/Media";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaBand } from "@/components/CtaBand";
+import { Reveal } from "@/components/Reveal";
 import {
   freeZoneMainland,
   freeZoneFaqs,
@@ -50,43 +51,44 @@ export default function FreeZoneMainlandPage() {
       {/* Positioning statement + image */}
       <section className="bg-white pb-20">
         <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative order-2 lg:order-1">
+          <Reveal className="relative order-2 lg:order-1">
             <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg shadow-ink-900/10">
               <Media imageKey="freeZoneMainland" rounded="rounded-2xl" />
             </div>
-          </div>
-          <div className="order-1 lg:order-2">
+          </Reveal>
+          <Reveal delay={120} className="order-1 lg:order-2">
             <SectionHeading
               eyebrow="What We Are — and Aren't"
               title="The fast mainland Ejari and address solution. Not a free zone formation provider."
               intro="We don't form free zone companies, and we're not asking you to leave your free zone. We provide exactly what's missing — a mainland-registered address and Ejari, delivered directly by our own team, so you can sell into the UAE, satisfy your bank, and bid on tenders."
             />
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* Why it matters — 4 reasons */}
       <section className="bg-cream-50 py-20">
         <Container>
-          <SectionHeading
-            eyebrow="Why This Matters"
-            title="What a free zone licence alone doesn't cover."
-            center
-          />
+          <Reveal>
+            <SectionHeading
+              eyebrow="Why This Matters"
+              title="What a free zone licence alone doesn't cover."
+              center
+            />
+          </Reveal>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {freeZoneMainland.reasons.map((r) => (
-              <div
-                key={r.title}
-                className="rounded-2xl border border-cream-200 bg-white p-6"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
-                  <Icon name={r.icon} className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-semibold text-ink-900">{r.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-700/70">
-                  {r.text}
-                </p>
-              </div>
+            {freeZoneMainland.reasons.map((r, i) => (
+              <Reveal key={r.title} delay={i * 90}>
+                <div className="card-premium h-full rounded-2xl bg-white p-6">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
+                    <Icon name={r.icon} className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 font-semibold text-ink-900">{r.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700/70">
+                    {r.text}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -96,7 +98,7 @@ export default function FreeZoneMainlandPage() {
       {mainlandExpansion && (
         <section className="bg-white py-20">
           <Container>
-            <div className="mx-auto max-w-2xl rounded-2xl border border-cream-200 bg-cream-50 p-8 sm:p-10">
+            <Reveal className="card-premium mx-auto max-w-2xl rounded-2xl bg-cream-50 p-8 sm:p-10">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
                 <Icon name={mainlandExpansion.icon} className="h-6 w-6" />
               </span>
@@ -119,7 +121,7 @@ export default function FreeZoneMainlandPage() {
               <ul className="mt-6 space-y-3">
                 {mainlandExpansion.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-500/15 text-gold-600">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink-900/8 text-ink-700">
                       <Icon name="check" className="h-3.5 w-3.5" />
                     </span>
                     <span className="text-sm text-ink-700/80">{f}</span>
@@ -141,7 +143,7 @@ export default function FreeZoneMainlandPage() {
                   <Icon name="whatsapp" className="h-4 w-4" /> WhatsApp
                 </a>
               </div>
-            </div>
+            </Reveal>
           </Container>
         </section>
       )}
@@ -149,11 +151,11 @@ export default function FreeZoneMainlandPage() {
       {/* FAQ */}
       <section className="bg-cream-50 py-24">
         <Container>
-          <div className="mx-auto max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl">
             <h2 className="text-center font-display text-3xl font-bold text-ink-900 sm:text-4xl">
               Questions from free zone companies
             </h2>
-            <div className="mt-10 divide-y divide-cream-200 overflow-hidden rounded-2xl border border-cream-200 bg-white">
+            <div className="card-premium mt-10 divide-y divide-cream-200 overflow-hidden rounded-2xl bg-white">
               {freeZoneFaqs.map((f) => (
                 <details key={f.q} className="group px-6 py-5">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-ink-900">
@@ -168,7 +170,7 @@ export default function FreeZoneMainlandPage() {
                 </details>
               ))}
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
 

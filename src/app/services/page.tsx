@@ -3,6 +3,7 @@ import { Container } from "@/components/ui";
 import { PageHeader } from "@/components/PageHeader";
 import { ItemDetailList } from "@/components/ItemDetailList";
 import { CtaBand } from "@/components/CtaBand";
+import { Reveal } from "@/components/Reveal";
 import { faqs, services } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -25,11 +26,11 @@ export default function ServicesPage() {
       {/* FAQ */}
       <section className="bg-cream-50 py-24">
         <Container>
-          <div className="mx-auto max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl">
             <h2 className="text-center font-display text-3xl font-bold text-ink-900 sm:text-4xl">
               Frequently asked questions
             </h2>
-            <div className="mt-10 divide-y divide-cream-200 overflow-hidden rounded-2xl border border-cream-200 bg-white">
+            <div className="card-premium mt-10 divide-y divide-cream-200 overflow-hidden rounded-2xl bg-white">
               {faqs.map((f) => (
                 <details key={f.q} className="group px-6 py-5">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-ink-900">
@@ -44,7 +45,7 @@ export default function ServicesPage() {
                 </details>
               ))}
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
 

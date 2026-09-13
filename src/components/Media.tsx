@@ -25,7 +25,7 @@ export function Media({
       <img
         src={src}
         alt={label}
-        className={`h-full w-full object-cover ${rounded} ${className}`}
+        className={`photo-grade h-full w-full object-cover ${rounded} ${className}`}
       />
     );
   }
