@@ -30,24 +30,33 @@ export function Media({
     );
   }
 
+  // Deliberate branded placeholder tile — used only where no real photo
+  // exists yet. Styled as an intentional product tile (brand mark, gold
+  // ring, "Photography Coming Soon" micro-label) rather than a checkerboard
+  // "broken image" pattern, so it never reads as an error.
   return (
     <div
-      className={`relative flex h-full w-full items-center justify-center overflow-hidden ${rounded} ${className} ${
+      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-gradient-to-br ${rounded} ${className} ${
         dark
-          ? "bg-ink-800 text-cream-100/60"
-          : "bg-cream-100 text-ink-900/45 placeholder-grid"
+          ? "from-ink-800 to-ink-900 text-cream-100/70"
+          : "from-cream-100 to-cream-50 text-ink-900/55"
       }`}
     >
-      <div className="flex flex-col items-center gap-2 px-4 text-center">
+      <div className="flex flex-col items-center gap-3 px-4 text-center">
         <span
-          className={`flex h-11 w-11 items-center justify-center rounded-full ${
-            dark ? "bg-white/10 text-gold-400" : "bg-white text-gold-600"
+          className={`flex h-14 w-14 items-center justify-center rounded-full border ${
+            dark
+              ? "border-gold-400/30 bg-white/5 text-gold-400"
+              : "border-gold-500/25 bg-white text-gold-600"
           } shadow-sm`}
         >
-          <Icon name="image" className="h-5 w-5" />
+          <Icon name="trident" className="h-6 w-6" />
         </span>
-        <span className="text-xs font-medium uppercase tracking-wide">
+        <span className="text-xs font-semibold uppercase tracking-wide">
           {label}
+        </span>
+        <span className="text-[0.65rem] uppercase tracking-widest opacity-60">
+          Photography Coming Soon
         </span>
       </div>
     </div>

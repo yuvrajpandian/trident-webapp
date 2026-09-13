@@ -26,7 +26,7 @@ export const SPACES_ORDER = [
 
 // The locked, flagship six — the comparison matrix is scoped to exactly
 // these, per the locked product catalogue. Meeting Room is a supporting
-// à la carte product (also included as credits with every workspace plan)
+// à la carte product (also included as credits with most workspace plans)
 // rather than a primary tier, so it's not part of this matrix, though it
 // still gets its own detail page.
 export const COMPARISON_SLUGS = [
@@ -70,18 +70,18 @@ export const COMPARISON_DATA: Record<string, ComparisonRow> = {
   "virtual-office-plus": {
     address: true,
     ejari: true,
-    workspace: "—",
+    workspace: "Lounge access (3 hrs/day)",
     meetingCredit: "6 hrs/month",
     mail: "Collection, forwarding & PO Box",
     idealFor: "Growing teams needing lounge access & inspection support",
-    upgrade: "Flexi Desk + Ejari",
+    upgrade: "Flexi Desk + Ejari — adds a desk; meeting credit changes to 4 hrs/month (from 6)",
   },
   "flexi-desk": {
     address: true,
     ejari: true,
     workspace: "Shared desk",
     meetingCredit: "4 hrs/month",
-    mail: "—",
+    mail: "Ask advisor",
     idealFor: "Founders who want a real desk without a fixed seat",
     upgrade: "Dedicated Desk + Ejari",
   },
@@ -90,7 +90,7 @@ export const COMPARISON_DATA: Record<string, ComparisonRow> = {
     ejari: true,
     workspace: "Assigned desk",
     meetingCredit: "6 hrs/month",
-    mail: "—",
+    mail: "Ask advisor",
     idealFor: "Solo operators wanting a consistent, permanent spot",
     upgrade: "Private Office",
   },
@@ -98,7 +98,7 @@ export const COMPARISON_DATA: Record<string, ComparisonRow> = {
     address: true,
     ejari: true,
     workspace: "Private cabin",
-    meetingCredit: "—",
+    meetingCredit: "Ask advisor",
     mail: "Reception & mail handling included",
     idealFor: "Teams needing a private, permanent office",
     upgrade: "Top tier — ask about multi-cabin suites",
@@ -140,7 +140,7 @@ export const WHY_CHOOSE: Record<string, string[]> = {
   ],
   "meeting-room": [
     "Book by the hour or the day — no long-term commitment required.",
-    "Included as credits with every workspace plan, so it's rarely an extra cost.",
+    "Included as credits with most workspace plans, so it's rarely an extra cost.",
     "A professional setting for client meetings, interviews or board sessions.",
   ],
 };
@@ -221,7 +221,7 @@ export const PRODUCT_FAQS: Record<string, ProductFaq[]> = {
   "private-office": [
     {
       q: "Why isn't there a fixed price shown?",
-      a: "Private Office is rented as an annual cabin lease, and cabins vary in size — get in touch for a quote framed at an approachable monthly-equivalent rate.",
+      a: "Private Office is rented on an annual lease per cabin, and cabins vary in size — pricing is quote-based, so get in touch for a tailored quote.",
     },
     {
       q: "Are instalments available?",
@@ -235,7 +235,7 @@ export const PRODUCT_FAQS: Record<string, ProductFaq[]> = {
   "meeting-room": [
     {
       q: "Do I need to be a member to book?",
-      a: "No — Meeting Room can be booked à la carte even if you're not a workspace member, though it's also included as monthly credits with every workspace plan.",
+      a: "No — Meeting Room can be booked à la carte even if you're not a workspace member, though it's also included as monthly credits with most workspace plans.",
     },
     {
       q: "How many guests can it seat?",

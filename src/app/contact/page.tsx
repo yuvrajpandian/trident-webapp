@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Container } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 import { PageHeader } from "@/components/PageHeader";
@@ -84,7 +85,9 @@ export default function ContactPage() {
                   advice, availability, and pricing.
                 </p>
                 <div className="mt-7">
-                  <ContactForm />
+                  <Suspense fallback={<div className="h-96 animate-pulse rounded-xl bg-cream-200/50" />}>
+                    <ContactForm />
+                  </Suspense>
                 </div>
               </div>
             </Reveal>

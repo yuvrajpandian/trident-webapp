@@ -38,7 +38,7 @@ export function CtaBand() {
             {site.email}
           </a>
           <a
-            href="/contact/"
+            href="/contact/?intent=tour"
             className="inline-flex items-center justify-center rounded-sm bg-gold-500 px-7 py-3 text-xs font-bold uppercase tracking-wider text-ink-900 transition hover:bg-gold-600"
           >
             Book a Tour

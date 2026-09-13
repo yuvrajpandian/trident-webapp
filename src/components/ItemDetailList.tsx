@@ -66,7 +66,7 @@ export function ItemDetailList({ items }: { items: Item[] }) {
               </ul>
 
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Button href="/contact/" variant="gold">
+                <Button href={`/contact/?service=${item.slug}`} variant="gold">
                   Enquire Now
                 </Button>
                 <a

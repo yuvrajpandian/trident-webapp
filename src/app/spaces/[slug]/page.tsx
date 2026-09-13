@@ -57,15 +57,15 @@ export default async function SpaceDetailPage({
     <>
       <PageHeader eyebrow="Workspace Solutions" title={item.title} intro={item.short} />
 
-      {/* Hero — image + price + primary CTA */}
+      {/* Hero — price + primary CTA lead on mobile, image lead on desktop */}
       <section className="bg-white py-20">
         <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <Reveal>
+          <Reveal className="order-2 lg:order-1">
             <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg shadow-ink-900/10">
               <Media imageKey={item.image} rounded="rounded-2xl" />
             </div>
           </Reveal>
-          <Reveal delay={100}>
+          <Reveal delay={100} className="order-1 lg:order-2">
             <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink-900 text-gold-400">
               <Icon name={item.icon} className="h-6 w-6" />
             </span>
@@ -76,8 +76,23 @@ export default async function SpaceDetailPage({
               </div>
             )}
             <p className="mt-4 max-w-lg leading-relaxed text-ink-700/70">{item.blurb}</p>
+
+            {/* Key inclusions — shown before the CTA so a mobile visitor sees
+                what's included without needing to reach the full "What's
+                Included" section further down the page. */}
+            <ul className="mt-5 space-y-2">
+              {item.features.slice(0, 3).map((f) => (
+                <li key={f} className="flex items-start gap-2.5 text-sm text-ink-700/75">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink-900/8 text-ink-700">
+                    <Icon name="check" className="h-3.5 w-3.5" />
+                  </span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href="/contact/" variant="gold" withArrow>
+              <Button href={`/contact/?service=${item.slug}`} variant="gold" withArrow>
                 Enquire Now
               </Button>
               <a

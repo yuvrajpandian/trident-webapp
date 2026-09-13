@@ -56,7 +56,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 xl:flex">
           <Link
-            href="/contact/"
+            href="/contact/?intent=tour"
             className="inline-flex items-center gap-2 rounded-sm bg-gold-500 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-ink-900 shadow-sm transition hover:bg-gold-600"
           >
             Book a Tour
@@ -90,7 +90,7 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href="/contact/"
+              href="/contact/?intent=tour"
               className="mt-2 inline-flex items-center justify-center rounded-sm bg-gold-500 px-5 py-3 text-sm font-bold uppercase tracking-wider text-ink-900"
             >
               Book a Tour

@@ -80,7 +80,7 @@ export const navLinks = [
 // ---- Hero trust badges ----------------------------------------------------
 export const heroBadges = [
   { icon: "building", title: "Prime Locations", text: "in Dubai" },
-  { icon: "bolt", title: "15–30 Min Ejari", text: "Not Days" },
+  { icon: "bolt", title: "Fast Ejari Turnaround", text: "Typically 15–30 Min" },
   { icon: "support", title: "Dedicated Support", text: "Every Step of the Way" },
 ];
 
@@ -127,13 +127,13 @@ export const spaces: Item[] = [
     title: "Virtual Office + Ejari",
     short: "A prestigious Dubai address with fast, compliant Ejari.",
     blurb:
-      "Get a prestigious Dubai business address, professional mail handling, and call answering — with Ejari issued in as little as 15–30 minutes, so your license stays fully compliant without the cost of a full-time office. Ideal for new licenses, renewals, or switching centres.",
+      "Get a prestigious Dubai business address, professional mail handling, and call answering — with Ejari issued in as little as 15–30 minutes to help keep your licence renewal on track, without the cost of a full-time office. Ideal for new licenses, renewals, or switching centres.",
     features: [
       "Prestigious Dubai business address",
       "Ejari tenancy contract included",
-      "Ejari issued in 15–30 minutes",
+      "Ejari typically issued in 15–30 minutes",
       "Mail collection & forwarding",
-      "Dedicated phone & call handling",
+      "Call answering service",
       "2 hrs/month meeting room credit",
       "Upgrade to Plus anytime for more",
     ],
@@ -206,7 +206,7 @@ export const spaces: Item[] = [
     title: "Private Office",
     short: "Fully furnished private cabins, rented annually — pricing varies by size.",
     blurb:
-      "Move into a fully-furnished, lockable private cabin sized for your team. Reception, utilities, internet and maintenance are all taken care of — rented as an annual cabin lease, with instalment payment available. Pricing varies by cabin size — get in touch for a quote framed at an approachable monthly-equivalent rate.",
+      "Move into a fully-furnished, lockable private cabin sized for your team. Reception, utilities, internet and maintenance are all taken care of — rented on an annual lease per cabin, with instalment payment available. Pricing is quote-based and varies by cabin size — get in touch for a tailored quote.",
     features: [
       "Fully furnished & move-in ready",
       "Annual rental per cabin — not per seat",
@@ -218,7 +218,7 @@ export const spaces: Item[] = [
     // TODO: replace with real per-cabin-size pricing once the full price
     // list is finalised — deliberately no AED figure shown yet.
     price: "Pricing Varies by Cabin Size",
-    priceNote: "starting from an approachable monthly-equivalent rate",
+    priceNote: "Quote-based · annual lease per cabin",
     note: "Instalment payment plans available — ask us for options.",
     goals: ["Find Workspace", "Grow My Business"],
   },
@@ -228,12 +228,12 @@ export const spaces: Item[] = [
     title: "Meeting Room",
     short: "Book by the hour or day — no membership required.",
     blurb:
-      "Modern, well-equipped meeting and conference rooms available by the hour or day. Included as monthly credits with every workspace plan, or booked à la carte if you're not yet a member.",
+      "Modern, well-equipped meeting and conference rooms available by the hour or day. Included as monthly credits with most workspace plans, or booked à la carte if you're not yet a member.",
     features: [
       "Book by the hour or full day",
       "Screens & video-conferencing ready",
       "Seats 4–20 guests",
-      "Included as credits with every workspace plan",
+      "Included as credits with most workspace plans",
       "Central, easy-to-reach location",
     ],
     image: "spaceMeetingRoom",
@@ -271,12 +271,12 @@ export const services: Item[] = [
     title: "Mainland Expansion",
     short: "Fast mainland Ejari & address for free zone companies — not a new company.",
     blurb:
-      "Under Executive Council Resolution 11 of 2025, many free zone companies operating outside their zone must become mainland-compliant by 21 March 2026. We provide the mainland Ejari-ready address and coordinate the branch filing directly — unlocking direct UAE sales, tender eligibility, and smoother banking, without replacing your free zone licence.",
+      "Under Executive Council Resolution 11 of 2025, many free zone companies operating outside their zone are required to establish mainland compliance — with specific requirements and deadlines depending on activity and free zone. We provide the mainland Ejari-ready address and coordinate the branch filing directly — supporting direct UAE sales, tender eligibility, and smoother banking, without replacing your free zone licence.",
     features: [
       "Mainland Ejari-ready registered address",
       "Branch licence filing coordination",
-      "Unlocks direct UAE customer sales",
-      "Meets bank & government-tender mainland requirements",
+      "Supports direct UAE customer sales",
+      "Helps meet bank & government-tender mainland requirements",
       "Delivered in-house — one team, start to finish",
     ],
     image: "serviceExpansion",
@@ -504,7 +504,7 @@ export const bundles: Bundle[] = [
     slug: "address",
     situationTag: "Already Set Up — Just Need a Base",
     tierLabel: "Compliance Only",
-    name: "Address",
+    name: "Address + Ejari",
     positioning:
       "Already have a company? Just need a compliant address and fast Ejari.",
     price: "AED 4,500",
@@ -543,7 +543,7 @@ export const bundles: Bundle[] = [
     name: "Launch",
     positioning: "Brand-new company — license, workspace and Ejari, one bill.",
     price: "AED 14,500",
-    priceNote: "all-in, Year 1 · govt fees excl.",
+    priceNote: "Year 1 package fee · govt fees separate",
     features: [
       "Mainland company formation (in-house)",
       "Flexi Desk + Ejari, 12 months",
@@ -562,7 +562,7 @@ export const bundles: Bundle[] = [
     positioning:
       "Everything handled — ideal for remote and India-based founders.",
     price: "AED 24,900",
-    priceNote: "all-in, Year 1 · govt/partner fees excl.",
+    priceNote: "Year 1 package fee · govt & partner fees separate",
     features: [
       "Everything in Launch",
       "Dedicated Desk (upgraded workspace)",
@@ -601,8 +601,8 @@ export const indiaFounders = {
     },
     {
       icon: "bolt",
-      title: "The same fast, compliant Ejari",
-      text: "Every Trident client gets 15–30 minute Ejari issuance — without needing to be physically present.",
+      title: "Fast Ejari, wherever you are",
+      text: "Ejari is typically issued within 15–30 minutes, without needing you to be physically present.",
     },
   ],
   cta: "Ask About Remote Setup",
@@ -659,10 +659,10 @@ export const freeZoneMainland = {
   eyebrow: "For Free Zone Companies",
   title: "Your free zone licence, backed by a mainland presence.",
   intro:
-    "A free zone licence alone can't sell directly to UAE customers, and banks increasingly expect mainland substance. We provide the fast mainland Ejari and address that makes you compliant — not a new company, just what's missing.",
+    "A free zone licence alone can't sell directly to UAE customers, and banks increasingly expect mainland substance. We provide the fast mainland Ejari and address that supports mainland compliance — not a new company, just what's missing.",
   deadline: {
-    label: "Compliance Deadline",
-    text: "Executive Council Resolution 11 of 2025 requires many free zone companies operating outside their zone to become mainland-compliant by 21 March 2026.",
+    label: "Compliance Update",
+    text: "Executive Council Resolution 11 of 2025 introduced mainland compliance requirements for many free zone companies operating outside their zone — specific requirements and deadlines depend on activity and free zone, so ask us to confirm your current position.",
   },
   reasons: [
     {
@@ -673,7 +673,7 @@ export const freeZoneMainland = {
     {
       icon: "wallet",
       title: "Banks scrutinise free zone accounts harder",
-      text: "Major UAE banks — including Emirates NBD, ADCB, Mashreq and RAK Bank — generally prefer mainland-licensed businesses and apply extra scrutiny to free-zone-only accounts.",
+      text: "Major UAE banks — including Emirates NBD, ADCB, Mashreq and RAK Bank — often apply extra scrutiny to free-zone-only accounts, and preferences can vary by bank and internal policy.",
     },
     {
       icon: "building",
@@ -692,7 +692,7 @@ export const freeZoneMainland = {
 export const freeZoneFaqs = [
   {
     q: "What is Executive Council Resolution 11 of 2025?",
-    a: "It's a Dubai regulation requiring many free zone companies operating outside their free zone to establish mainland compliance — including a mainland-registered address — by 21 March 2026. Requirements vary by activity and free zone, so we recommend confirming your specific obligation with us or your legal advisor.",
+    a: "It's a Dubai regulation requiring many free zone companies operating outside their free zone to establish mainland compliance — including a mainland-registered address. Deadlines and requirements vary by activity and free zone, so we recommend confirming your specific obligation and current deadline with us or your legal advisor.",
   },
   {
     q: "Do I need to form an entirely new mainland company?",
@@ -703,7 +703,7 @@ export const freeZoneFaqs = [
     a: "Yes — a mainland branch presence typically works alongside your existing free zone licence, giving you both the benefits you already have and mainland compliance where you need it.",
   },
   {
-    q: "What happens if I miss the 21 March 2026 deadline?",
+    q: "What happens if I miss my compliance deadline?",
     a: "We can't advise on penalties — that's a question for DET or your legal counsel. What we can tell you is that mainland Ejari and address setup typically takes far less time than most companies expect, so there's no reason to wait until the deadline is close.",
   },
 ];

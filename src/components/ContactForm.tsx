@@ -1,32 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Icon } from "./Icon";
-import { services, spaces, site, whatsappLink } from "@/lib/site";
+import { services, spaces, site, whatsappLink, bookTourMessage } from "@/lib/site";
 
 const interests = [...spaces, ...services];
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "whatsapp" | "error";
 
+/* Enquiry delivery:
+ *  - Primary, production path: POST to Web3Forms (api.web3forms.com) once
+ *    `site.web3formsKey` is set — see the TODO comment on that field in
+ *    src/lib/site.ts for exactly what's needed. No visitor-facing setup
+ *    note is shown; this is documented for the developer/owner only.
+ *  - Until a key is set: submitting composes the same enquiry as a
+ *    WhatsApp message and opens it in a new tab — a real, working channel
+ *    already used elsewhere on the site, rather than relying on the
+ *    visitor's local email client (mailto). */
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const hasKey = site.web3formsKey.trim().length > 0;
+  const searchParams = useSearchParams();
+
+  const serviceSlug = searchParams.get("service");
+  const intent = searchParams.get("intent");
+
+  const preselectedService = useMemo(() => {
+    if (!serviceSlug) return "";
+    const match = interests.find((i) => i.slug === serviceSlug);
+    return match?.title ?? "";
+  }, [serviceSlug]);
+
+  const defaultMessage = useMemo(() => {
+    if (intent === "tour") return bookTourMessage;
+    if (preselectedService) return `Hi, I'm interested in your ${preselectedService}.`;
+    return "";
+  }, [intent, preselectedService]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    // No key yet → fall back to opening a prefilled email so no lead is lost.
+    // No key yet → open a prefilled WhatsApp message instead of relying on
+    // the visitor's local email app. This is a real, working channel (the
+    // same one used site-wide), not a developer placeholder.
     if (!hasKey) {
-      const body = `Name: ${data.get("name")}\nEmail: ${data.get(
-        "email"
-      )}\nPhone: ${data.get("phone")}\nService: ${data.get(
-        "service"
-      )}\n\n${data.get("message")}`;
-      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-        "Website enquiry"
-      )}&body=${encodeURIComponent(body)}`;
+      const parts = [
+        `Hi Trident Nexus, I'd like to enquire.`,
+        `Name: ${data.get("name")}`,
+        data.get("phone") ? `Phone: ${data.get("phone")}` : null,
+        data.get("service") ? `Service: ${data.get("service")}` : null,
+        `Message: ${data.get("message")}`,
+      ].filter(Boolean);
+      window.open(whatsappLink(parts.join("\n")), "_blank", "noopener,noreferrer");
+      setStatus("whatsapp");
       return;
     }
 
@@ -70,6 +99,30 @@ export function ContactForm() {
         >
           <Icon name="whatsapp" className="h-4 w-4" /> Chat on WhatsApp
         </a>
+      </div>
+    );
+  }
+
+  if (status === "whatsapp") {
+    return (
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-green-200 bg-green-50 p-10 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white">
+          <Icon name="whatsapp" className="h-7 w-7" />
+        </span>
+        <h3 className="mt-5 font-display text-2xl font-semibold text-ink-900">
+          Almost there!
+        </h3>
+        <p className="mt-2 max-w-sm text-sm text-ink-700/70">
+          We&apos;ve opened WhatsApp with your enquiry details filled in —
+          just hit send there and our team will reply directly.
+        </p>
+        <button
+          type="button"
+          onClick={() => setStatus("idle")}
+          className="mt-6 text-sm font-semibold text-ink-700/60 underline-offset-4 hover:underline"
+        >
+          Back to the form
+        </button>
       </div>
     );
   }
@@ -121,7 +174,7 @@ export function ContactForm() {
           />
         </Field>
         <Field label="Service of interest">
-          <select name="service" defaultValue="" className={inputCls}>
+          <select name="service" defaultValue={preselectedService} className={inputCls}>
             <option value="" disabled>
               Select a service
             </option>
@@ -140,19 +193,11 @@ export function ContactForm() {
           name="message"
           required
           rows={4}
+          defaultValue={defaultMessage}
           placeholder="Tell us a little about your business and what you're looking for..."
           className={`${inputCls} resize-none`}
         />
       </Field>
-
-      {!hasKey && (
-        <p className="rounded-lg bg-amber-50 px-4 py-3 text-xs text-amber-800">
-          Setup note: add your free Web3Forms key in{" "}
-          <code className="font-mono">src/lib/site.ts</code> to receive
-          submissions by email. Until then, this button opens your email app
-          with the message pre-filled.
-        </p>
-      )}
 
       {status === "error" && (
         <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">

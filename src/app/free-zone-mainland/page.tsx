@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "Mainland Presence for Free Zone Companies — Fast Ejari & Address",
   description:
-    "Free zone company needing mainland compliance ahead of Executive Council Resolution 11/2025 (deadline 21 March 2026)? Trident Nexus provides the fast mainland Ejari and address you need — not a new company formation.",
+    "Free zone company needing mainland compliance under Executive Council Resolution 11 of 2025? Trident Nexus provides the fast mainland Ejari and address you need — not a new company formation.",
 };
 
 const mainlandExpansion = services.find((s) => s.slug === "mainland-expansion");
@@ -38,7 +38,7 @@ export default function FreeZoneMainlandPage() {
             </span>
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-gold-700">
-                {freeZoneMainland.deadline.label} — 21 March 2026
+                {freeZoneMainland.deadline.label}
               </div>
               <p className="mt-1 text-sm leading-relaxed text-ink-700/80">
                 {freeZoneMainland.deadline.text}
