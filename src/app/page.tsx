@@ -5,8 +5,8 @@ import { Media } from "@/components/Media";
 import { CtaBand } from "@/components/CtaBand";
 import { Reveal } from "@/components/Reveal";
 import { SolutionFinder } from "@/components/SolutionFinder";
+import { HomepageSpaces } from "@/components/HomepageSpaces";
 import {
-  spaces,
   services,
   heroBadges,
   processSteps,
@@ -25,7 +25,7 @@ export default function HomePage() {
       <Hero />
       <Bundles />
       <SolutionFinder />
-      <Solutions />
+      <HomepageSpaces />
       <SectionSeam />
       <Journey />
       <SectionSeam />
@@ -97,72 +97,6 @@ function Hero() {
               </div>
             ))}
           </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------ Solutions -- */
-function Solutions() {
-  return (
-    <section className="bg-cream-50 py-24">
-      <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="Our Solutions"
-            title="Flexible Spaces. Powerful Possibilities."
-            center
-          />
-        </Reveal>
-
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:nth-child(3n+1):nth-last-child(1)]:col-start-2">
-          {spaces.map((s, i) => (
-            <Reveal key={s.slug} delay={(i % 3) * 90}>
-              <Link
-                href={`/spaces/#${s.slug}`}
-                className="card-premium group flex h-full flex-col overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1"
-              >
-                {/* Image with overlapping icon */}
-                <div className="relative">
-                  <div className="aspect-[16/10] w-full overflow-hidden">
-                    <Media imageKey={s.image} rounded="rounded-none" />
-                  </div>
-                  <span className="absolute -bottom-6 left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full bg-ink-900 text-gold-400 shadow-lg ring-4 ring-white">
-                    <Icon name={s.icon} className="h-5 w-5" />
-                  </span>
-                </div>
-
-                <div className="flex flex-1 flex-col items-center px-6 pt-10 pb-7 text-center">
-                  <h3 className="font-display text-xl font-bold text-ink-900">
-                    {s.title}
-                  </h3>
-                  {s.price && (
-                    <div className="mt-2 flex items-baseline gap-1.5">
-                      <span className="font-display text-lg font-bold text-gold-600">
-                        {s.price}
-                      </span>
-                      {s.priceNote && (
-                        <span className="text-xs text-ink-700/55">
-                          {s.priceNote}
-                        </span>
-                      )}
-                    </div>
-                  )}
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-700/65">
-                    {s.short}
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gold-600">
-                    Learn More
-                    <Icon
-                      name="arrowRight"
-                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                    />
-                  </span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
         </div>
       </Container>
     </section>

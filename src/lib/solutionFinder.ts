@@ -547,7 +547,7 @@ export function getRecommendation(spec: ResultSpec): ResolvedRecommendation | nu
       price: item.price,
       priceNote: item.priceNote,
       benefits: item.features.slice(0, 5),
-      href: `/spaces/#${item.slug}`,
+      href: `/spaces/${item.slug}/`,
       short: item.short,
       icon: item.icon,
     };

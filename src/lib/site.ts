@@ -25,7 +25,7 @@ export const site = {
   name: "Trident Nexus",
   accent: "Nexus", // the gold sub-brand shown next to the logo
   fullName: "Trident Nexus Business Centre",
-  tagline: "Everything your business needs to start, work and grow in Dubai",
+  tagline: "Everything your business needs to establish, operate and grow in Dubai",
   description:
     "Trident Nexus Business Centre provides premium workspaces and end-to-end business setup in Dubai — flexi desks, private offices, meeting rooms, virtual offices, company formation and PRO services.",
 
@@ -97,6 +97,8 @@ export type Item = {
   priceNote?: string; // e.g. "per year" or "+ government fees"
   partnerDelivered?: boolean; // shows a "Delivered via licensed partner" disclosure
   note?: string; // e.g. "Ask us about instalment options." — shown under the CTA
+  goals?: string[]; // locked customer-goal labels this item serves — leads
+  // product pages with "why you'd want this" before feature lists
 };
 
 // ---- Spaces (workspace & Ejari products — all delivered directly) ---------
@@ -104,7 +106,7 @@ export const spaces: Item[] = [
   {
     slug: "virtual-office-address",
     icon: "docCheck",
-    title: "Virtual Office Address",
+    title: "Business Address",
     short: "A registered address and tenancy contract — no Ejari included.",
     blurb:
       "A straightforward registered business address with a signed tenancy contract — ideal if you don't need Ejari registration for licensing. Upgrade to Virtual Office + Ejari anytime your requirements change.",
@@ -117,6 +119,7 @@ export const spaces: Item[] = [
     image: "spaceVirtualOfficeAddress",
     price: "AED 2,500",
     priceNote: "per year",
+    goals: ["Start My Business"],
   },
   {
     slug: "virtual-office",
@@ -137,11 +140,12 @@ export const spaces: Item[] = [
     image: "spaceVirtualOffice",
     price: "AED 4,500",
     priceNote: "per year",
+    goals: ["Start My Business", "Establish a Mainland Business Presence"],
   },
   {
     slug: "virtual-office-plus",
     icon: "phone",
-    title: "Virtual Office + Ejari Plus",
+    title: "Virtual Office Plus + Ejari",
     short: "Everything in Virtual Office + Ejari, plus a dedicated landline, daily lounge access and inspection support.",
     blurb:
       "For businesses that want more than the basics — a dedicated UAE landline number, daily lounge access, triple the meeting room credit, and support through DED, Labour and Bank inspections, all on top of everything in Virtual Office + Ejari. A genuinely richer tier, not just a label.",
@@ -156,6 +160,7 @@ export const spaces: Item[] = [
     image: "spaceVirtualOfficePlus",
     price: "AED 6,500",
     priceNote: "per year",
+    goals: ["Start My Business", "Grow My Business"],
   },
   {
     slug: "flexi-desk",
@@ -174,6 +179,7 @@ export const spaces: Item[] = [
     image: "spaceFlexiDesk",
     price: "AED 7,900",
     priceNote: "per year",
+    goals: ["Find Workspace", "Start My Business"],
   },
   {
     slug: "dedicated-desk",
@@ -192,6 +198,7 @@ export const spaces: Item[] = [
     image: "spaceDedicatedDesk",
     price: "AED 13,500",
     priceNote: "per year",
+    goals: ["Find Workspace", "Grow My Business"],
   },
   {
     slug: "private-office",
@@ -213,6 +220,7 @@ export const spaces: Item[] = [
     price: "Pricing Varies by Cabin Size",
     priceNote: "starting from an approachable monthly-equivalent rate",
     note: "Instalment payment plans available — ask us for options.",
+    goals: ["Find Workspace", "Grow My Business"],
   },
   {
     slug: "meeting-room",
@@ -231,6 +239,7 @@ export const spaces: Item[] = [
     image: "spaceMeetingRoom",
     price: "AED 120/hr",
     priceNote: "or AED 750/day, non-members",
+    goals: ["Find Workspace"],
   },
 ];
 
@@ -507,7 +516,7 @@ export const bundles: Bundle[] = [
       "2 hrs/month meeting room credit",
     ],
     cta: "Explore Virtual Office",
-    href: "/spaces/#virtual-office",
+    href: "/spaces/virtual-office/",
   },
   {
     slug: "work",

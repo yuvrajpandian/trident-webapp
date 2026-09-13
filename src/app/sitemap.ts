@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/lib/site";
+import { site, spaces } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -15,9 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/",
     "/contact/",
   ];
-  return routes.map((path) => ({
+  const spaceRoutes = spaces.map((s) => `/spaces/${s.slug}/`);
+
+  return [...routes, ...spaceRoutes].map((path) => ({
     url: `${site.url}${path}`,
     changeFrequency: "monthly",
-    priority: path === "/" ? 1 : 0.8,
+    priority: path === "/" ? 1 : path.startsWith("/spaces/") && path !== "/spaces/" ? 0.7 : 0.8,
   }));
 }

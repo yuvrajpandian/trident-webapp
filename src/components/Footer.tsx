@@ -36,7 +36,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               {spaces.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/spaces/#${s.slug}`} className="text-cream-100/65 transition hover:text-gold-400">
+                  <Link href={`/spaces/${s.slug}/`} className="text-cream-100/65 transition hover:text-gold-400">
                     {s.title}
                   </Link>
                 </li>
