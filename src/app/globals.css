@@ -94,6 +94,29 @@ html {
   box-shadow: 0 16px 40px -12px rgba(20, 18, 14, 0.18);
 }
 
+/* Subtle "pop" entrance used by the Solution Finder for each question/result
+   step — layered on top of the scroll-Reveal fade so a step feels like it
+   settles into place rather than just appearing. Respects
+   prefers-reduced-motion. */
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-pop-in {
+  animation: pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop-in {
+    animation: none;
+  }
+}
+
 /* Decorative placeholder texture for image stand-ins */
 .placeholder-grid {
   background-image: linear-gradient(

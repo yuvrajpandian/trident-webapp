@@ -86,6 +86,7 @@ type ButtonProps = {
   className?: string;
   external?: boolean;
   withArrow?: boolean;
+  onClick?: () => void;
 };
 
 const variants: Record<string, string> = {
@@ -102,6 +103,7 @@ export function Button({
   className = "",
   external = false,
   withArrow = false,
+  onClick,
 }: ButtonProps) {
   const cls = `group inline-flex items-center justify-center gap-2 rounded-sm px-7 py-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-200 ${variants[variant]} ${className}`;
   const inner = (
@@ -117,13 +119,13 @@ export function Button({
   );
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} onClick={onClick}>
         {inner}
       </a>
     );
   }
   return (
-    <Link href={href} className={cls}>
+    <Link href={href} className={cls} onClick={onClick}>
       {inner}
     </Link>
   );

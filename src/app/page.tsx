@@ -4,11 +4,11 @@ import { Icon } from "@/components/Icon";
 import { Media } from "@/components/Media";
 import { CtaBand } from "@/components/CtaBand";
 import { Reveal } from "@/components/Reveal";
+import { SolutionFinder } from "@/components/SolutionFinder";
 import {
   spaces,
   services,
   heroBadges,
-  routeFinder,
   processSteps,
   bundles,
   whyDubai,
@@ -24,7 +24,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Bundles />
-      <RouteFinder />
+      <SolutionFinder />
       <Solutions />
       <SectionSeam />
       <Journey />
@@ -79,7 +79,7 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="#bundles" variant="gold">
+            <Button href="#find-my-solution" variant="gold">
               Find My Solution
             </Button>
             <Button href="/spaces/" variant="outlineLight">
@@ -97,59 +97,6 @@ function Hero() {
               </div>
             ))}
           </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------- Route finder ---- */
-/* Demoted, secondary fallback below the bundles: for visitors who'd rather
-   browse by situation than compare packages. Deliberately lighter-weight
-   than Bundles — smaller type, tighter spacing, muted eyebrow — so it never
-   competes with the primary answer above it. */
-function RouteFinder() {
-  return (
-    <section id="route-finder" className="scroll-mt-24 bg-white py-16">
-      <Container>
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-ink-700/45">
-              Or Browse By Situation
-            </span>
-            <h2 className="mt-3 font-display text-2xl font-bold text-ink-900 sm:text-3xl">
-              Already know exactly what you need?
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-ink-700/60">
-              Skip comparing bundles — tell us where you are today and
-              we&apos;ll point you straight to the right page.
-            </p>
-          </div>
-        </Reveal>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {routeFinder.map((r, i) => (
-            <Reveal key={r.n} delay={i * 60}>
-              <Link
-                href={r.href}
-                className="card-premium group flex h-full flex-col rounded-xl bg-cream-50 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
-              >
-                <span className="font-display text-xl font-bold text-gold-500">
-                  {r.n}
-                </span>
-                <h3 className="mt-2 text-sm font-semibold text-ink-900">{r.title}</h3>
-                <p className="mt-1.5 flex-1 text-xs leading-relaxed text-ink-700/55">
-                  {r.text}
-                </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-gold-600">
-                  {r.cta}
-                  <Icon
-                    name="arrowRight"
-                    className="h-3 w-3 transition-transform group-hover:translate-x-1"
-                  />
-                </span>
-              </Link>
-            </Reveal>
-          ))}
         </div>
       </Container>
     </section>
