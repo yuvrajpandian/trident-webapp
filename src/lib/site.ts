@@ -30,10 +30,10 @@ export const site = {
     "Trident Nexus Business Centre provides premium workspaces and end-to-end business setup in Dubai — flexi desks, private offices, meeting rooms, virtual offices, company formation and PRO services.",
 
   // ---- Contact details ---------------------------------------------------
-  phone: "+971 50 123 4567", // TODO: confirm real number
-  phoneHref: "+971501234567", // TODO: confirm, digits only
-  whatsapp: "971501234567", // TODO: confirm
-  email: "info@tridentnexusdubai.com", // TODO: confirm this mailbox is live
+  phone: "+971 50 562 9310",
+  phoneHref: "+971505629310",
+  whatsapp: "971505629310",
+  email: "yuvaraj@tridentnexusdubai.com",
   address: {
     line1: "Office 1503, Fahidi Heights",
     line2: "Khalid Bin Al Waleed Rd, Bur Dubai, Al Hamriya",
@@ -41,7 +41,8 @@ export const site = {
   },
   mapsQuery: "Fahidi Heights, Khalid Bin Al Waleed Road, Bur Dubai, Dubai, UAE",
 
-  hours: "Sunday – Thursday, 9:00 AM – 6:00 PM",
+  hours:
+    "Mon – Fri: 9:00 AM – 6:00 PM · Sat: 9:00 AM – 1:00 PM (closed on the second Saturday of the month) · Sun: Closed",
 
   social: {
     instagram: "", // e.g. "https://instagram.com/tridentnexus"
@@ -50,6 +51,10 @@ export const site = {
   },
 
   // Free, no-backend form handling. Sign up at https://web3forms.com, paste key.
+  // INTERNAL TODO (owner/dev only — not shown publicly): no key yet as of this
+  // update. Until one is set, ContactForm falls back to a prefilled WhatsApp
+  // message, which is a fully working enquiry channel — no visitor-facing
+  // change needed once a key is added, just paste it below.
   web3formsKey: "", // TODO: paste your Web3Forms access key
 
   url: "https://tridentnexusdubai.com", // primary domain
@@ -193,6 +198,7 @@ export const spaces: Item[] = [
       "Lockable storage included",
       "Ejari tenancy contract included",
       "6 hrs/month meeting room credit",
+      "Mail handling included",
       "Priority upgrade path to Private Office",
     ],
     image: "spaceDedicatedDesk",
@@ -211,6 +217,7 @@ export const spaces: Item[] = [
       "Fully furnished & move-in ready",
       "Annual rental per cabin — not per seat",
       "Reception & mail handling included",
+      "8 hrs/month meeting room credit",
       "Ejari tenancy for visas & licensing",
       "Custom quote by cabin size",
     ],

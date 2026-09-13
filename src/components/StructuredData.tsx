@@ -18,7 +18,7 @@ export function StructuredData() {
       addressLocality: "Dubai",
       addressCountry: "AE",
     },
-    openingHours: "Su-Th 09:00-18:00",
+    openingHours: ["Mo-Fr 09:00-18:00", "Sa 09:00-13:00"],
   };
   return (
     <script
