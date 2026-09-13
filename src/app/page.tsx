@@ -433,8 +433,22 @@ function Bundles() {
                   {p.tierLabel}
                 </span>
               )}
+
+              {/* Situational tag — so business-setup-first and
+                  workspace-first shoppers each recognize themselves at a
+                  glance, before reading the feature-level tier label. */}
+              <span
+                className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider ${
+                  p.highlight
+                    ? "bg-white/10 text-cream-100/80"
+                    : "bg-ink-900/5 text-ink-700/60"
+                }`}
+              >
+                {p.situationTag}
+              </span>
+
               {!p.highlight && (
-                <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                <span className="mt-3 text-xs font-bold uppercase tracking-wider text-gold-600">
                   {p.tierLabel}
                 </span>
               )}

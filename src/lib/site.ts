@@ -477,6 +477,7 @@ export const processSteps = [
 // don't promise interest-free terms until one is signed.
 export type Bundle = {
   slug: string;
+  situationTag: string;
   tierLabel: string;
   name: string;
   positioning: string;
@@ -492,6 +493,7 @@ export type Bundle = {
 export const bundles: Bundle[] = [
   {
     slug: "address",
+    situationTag: "Already Set Up — Just Need a Base",
     tierLabel: "Compliance Only",
     name: "Address",
     positioning:
@@ -509,6 +511,7 @@ export const bundles: Bundle[] = [
   },
   {
     slug: "work",
+    situationTag: "Already Set Up — Just Need a Base",
     tierLabel: "Most Flexible",
     name: "Work",
     positioning: "Need a real place to work, with the right address built in.",
@@ -526,6 +529,7 @@ export const bundles: Bundle[] = [
   },
   {
     slug: "launch",
+    situationTag: "Starting Fresh — Need It All",
     tierLabel: "New Founders",
     name: "Launch",
     positioning: "Brand-new company — license, workspace and Ejari, one bill.",
@@ -543,6 +547,7 @@ export const bundles: Bundle[] = [
   },
   {
     slug: "launch-grow",
+    situationTag: "Starting Fresh — Need It All",
     tierLabel: "Complete",
     name: "Launch + Grow",
     positioning:
