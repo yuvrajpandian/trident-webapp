@@ -21,13 +21,18 @@ export function Reveal({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (
+    const prefersReducedMotion =
       typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setVisible(true);
-      return;
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      // Show immediately for reduced-motion users. Deferred a tick (not
+      // called synchronously in the effect body) — same effective timing
+      // as before, just structured as a callback like the observer below.
+      const id = window.setTimeout(() => setVisible(true), 0);
+      return () => window.clearTimeout(id);
     }
+
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(

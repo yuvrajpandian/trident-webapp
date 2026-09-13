@@ -20,8 +20,12 @@ export function Media({
   const label = entry?.label ?? "Image";
 
   if (src) {
-    // eslint-disable-next-line @next/next/no-img-element
     return (
+      // Intentional plain <img>: arbitrary image paths supplied via the
+      // `images` map, resolved at static-export build time with no
+      // next/image loader configured — switching to next/image would need
+      // per-image loader work outside this cleanup's scope.
+      // eslint-disable-next-line @next/next/no-img-element
       <img
         src={src}
         alt={label}
